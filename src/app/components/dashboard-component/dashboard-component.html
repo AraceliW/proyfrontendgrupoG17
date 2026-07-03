@@ -1,0 +1,82 @@
+<div class="row g-4 mb-4">
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="icon-box bg-icon-green"><i class="bi bi-ticket-detailed"></i></div>
+                <span class="badge-trend">+12.4%</span>
+            </div>
+            <h3 class="stat-value">20,100</h3>
+            <p class="stat-label">Entradas Vendidas</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="icon-box bg-icon-blue"><i class="bi bi-graph-up-arrow"></i></div>
+                <span class="badge-trend">+8.1%</span>
+            </div>
+            <h3 class="stat-value">$2.75M</h3>
+            <p class="stat-label">Recaudación Total</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="icon-box bg-icon-orange"><i class="bi bi-people"></i></div>
+                <span class="badge-trend">+5.7%</span>
+            </div>
+            <h3 class="stat-value">14,320</h3>
+            <p class="stat-label">Compradores Únicos</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="icon-box bg-icon-purple"><i class="bi bi-star"></i></div>
+                <span class="badge-trend">+3.2%</span>
+            </div>
+            <h3 class="stat-value">$136.8</h3>
+            <p class="stat-label">Promedio por Entrada</p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-12 col-lg-8">
+        <div class="chart-card">
+            <h5 class="chart-title">Ventas por Partido</h5>
+            <p class="chart-subtitle">Entradas vendidas por encuentro</p>
+            <div style="height: 300px; width: 100%;">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="chart-card">
+            <h5 class="chart-title">Por Categoría</h5>
+            <p class="chart-subtitle">% del total vendido</p>
+            <div style="height: 200px; width: 100%; display: flex; justify-content: center;">
+                <canvas id="donutChart"></canvas>
+            </div>
+            <div class="custom-legend mt-4">
+                <div class="legend-item">
+                    <div class="legend-label"><span class="legend-dot" style="background:#2e7d32;"></span> General</div>
+                    <div class="legend-value">45%</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-label"><span class="legend-dot" style="background:#1d4ed8;"></span> Platino</div>
+                    <div class="legend-value">25%</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-label"><span class="legend-dot" style="background:#ea580c;"></span> VIP</div>
+                    <div class="legend-value">20%</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-label"><span class="legend-dot" style="background:#7e22ce;"></span> Palco</div>
+                    <div class="legend-value">10%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

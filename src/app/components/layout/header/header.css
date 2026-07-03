@@ -1,0 +1,26 @@
+.navbar-brand i {
+    color: #ffd700;
+    margin-right: 8px;
+}
+
+.nav-link {
+    color: #a0aec0 !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0 10px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--green-secondary) !important;
+}
+
+.nav-link-look {
+    color: var(--green-secondary) !important;
+}
+
+h1 {
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+

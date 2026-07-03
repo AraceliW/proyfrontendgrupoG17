@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a routerLink="/" class="text-white text-decoration-none d-flex flex-column">
+                <div class="d-flex align-items-center mb-1">
+                    <i class="bi bi-trophy-fill fs-4 text-warning me-2"></i>
+                    <span class="fs-5 fw-bold">TU <span style="color: #04d66c;">ENTRADA</span></span>
+                </div>
+                <span class="text-secondary" style="font-size: 0.8rem;">Panel de Administración</span>
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a routerLink="/Admin/Dashboard" class="nav-item" routerLinkActive="active">
+                <i class="bi bi-grid-1x2-fill"></i> Dashboard
+            </a>
+            <a routerLink="/Admin/Reportes" class="nav-item" routerLinkActive="active">
+                <i class="bi bi-file-earmark-text"></i> Reportes
+            </a>
+            <a routerLink="/Admin/Partidos" class="nav-item" routerLinkActive="active">
+                <i class="bi bi-calendar3"></i> Gestionar Partidos
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a routerLink="/" class="nav-item">
+                <i class="bi bi-house"></i> Ir al Inicio
+            </a>
+            <a routerLink="/" class="nav-item mb-0">
+                <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <h4>DASHBOARD</h4>
+            <div class="user-profile">
+                <div class="d-flex align-items-center ms-3">
+                    <div class="avatar">A</div>
+                    <span class="ms-2 fw-semibold text-dark d-none d-md-block">Administrador</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

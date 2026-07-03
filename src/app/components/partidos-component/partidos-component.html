@@ -1,0 +1,93 @@
+<main class="">
+        <h4>GESTIONAR PARTIDOS</h4>
+    <div class="content-area">
+        <div class="form-card">
+
+            <div class="form-card-header">
+                <h4 class="fw-bold mb-1 fs-5">REGISTRAR NUEVO PARTIDO</h4>
+                <p class="mb-0 text-secondary" style="font-size: 0.9rem;">Completa todos los campos para agregar
+                    el partido al torneo</p>
+            </div>
+
+            <div class="form-card-body">
+                <form>
+                    <div class="section-label">EQUIPOS</div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Equipo 1</label>
+                            <input type="text" class="form-control" placeholder="Ingresar equipo...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Equipo 2</label>
+                            <input type="text" class="form-control" placeholder="Ingresar equipo...">
+                        </div>
+                    </div>
+
+                    <div class="section-label">FECHA, HORA Y FASE</div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" placeholder="dd/mm/aaaa">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Hora</label>
+                            <input type="time" class="form-control" placeholder="--:--">
+                        </div>
+                    </div>
+
+                    <div class="section-label">SEDE</div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Cancha</label>
+                             <input type="text" class="form-control" placeholder="Ingresar cancha...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tpo de Partido</label>
+                            <select class="form-select">
+                                <option selected>Seleccionar tipo...</option>
+                                <option value="A">Futbol</option>
+                                <option value="B">Basquet</option>
+                                <option value="C">..</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="section-label">PRECIOS POR CATEGORÍA (USD)</div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label">General</label>
+                            <div class="input-group custom-input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" placeholder="1500033" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Platino</label>
+                            <div class="input-group custom-input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" placeholder="22280" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">VIP</label>
+                            <div class="input-group custom-input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" placeholder="43434" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-5">
+                        <button type="button" class="btn btn-form btn-outline-custom px-4">Limpiar
+                            Formulario</button>
+                        <button type="submit" class="btn btn-form btn-green flex-grow-1">
+                            <i class="bi bi-check-circle"></i> Guardar Partido
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</main>

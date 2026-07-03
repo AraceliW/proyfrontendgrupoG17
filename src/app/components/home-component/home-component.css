@@ -1,0 +1,50 @@
+.hero-section {
+    background: linear-gradient(to right, rgba(11, 19, 32, 0.7), rgba(0, 0, 0, 0.021)),
+        url('https://timelinecovers.pro/facebook-cover/download/straight-kick-from-a-soccer-athlete-facebook-cover.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    color: white;
+    min-height: 70vh;
+}
+
+.match-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.match-header {
+    background-color: var(--blue-dark);
+    color: white;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.team-flag {
+    width: 50px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.vs-text {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--blue-dark);
+}
+
+.cta-section {
+    background-color: var(--blue-dark);
+    border-radius: 16px;
+    background-image: radial-gradient(circle at right, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+}

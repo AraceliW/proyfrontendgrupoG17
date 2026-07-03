@@ -1,0 +1,19 @@
+footer {
+    background-color: var(--blue-nav);
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: white;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
