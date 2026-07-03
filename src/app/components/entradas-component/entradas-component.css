@@ -1,0 +1,142 @@
+.match-hero {
+    background-color: var(--blue-dark);
+    padding: 40px 0 60px 0;
+    color: white;
+}
+
+.breadcrumb-text {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-text a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.breadcrumb-text a:hover {
+    color: white;
+}
+
+.team-flag-large {
+    width: 120px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 12px;
+    object-fit: cover;
+}
+
+.custom-card {
+    background: white;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.custom-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-weight: 700;
+    color: var(--blue-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.video-container {
+    position: relative;
+    height: 300px;
+    background: url('https://images.unsplash.com/photo-1518605368461-1ee7c532066d?q=80&w=1000&auto=format&fit=crop') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-btn {
+    width: 60px;
+    height: 60px;
+    background: #ff0000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.map-container {
+    position: relative;
+    height: 300px;
+    background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop') center/cover;
+}
+
+.map-info-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ticket-item:last-child {
+    border-bottom: none;
+}
+
+.ticket-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.status-disp {
+    color: var(--green-brand);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-lim {
+    color: #f59e0b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-ago {
+    color: #ef4444;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.ticket-agotado {
+    opacity: 0.5;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    color: #64748b;
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--blue-dark);
+    text-align: right;
+}

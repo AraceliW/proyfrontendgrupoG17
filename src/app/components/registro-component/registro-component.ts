@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './registro-component.html',
   styleUrl: './registro-component.css',
 })
-export class RegistroComponent {}
+export class RegistroComponent {
+  tabActivo: 'login' | 'register' = 'login';
+  switchTab(tab: 'login' | 'register') {
+    this.tabActivo = tab;
+  }
+}

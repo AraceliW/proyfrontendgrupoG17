@@ -5,6 +5,8 @@ import { PerfilComponent } from './components/perfil-component/perfil-component'
 import { ReportesComponent } from './components/reportes-component/reportes-component';
 import { PartidosComponent } from './components/partidos-component/partidos-component';
 import { PanelAdmin } from './pages/panel-admin/panel-admin';
+import { RegistroComponent } from './components/registro-component/registro-component';
+import { EntradasComponent } from './components/entradas-component/entradas-component';
 
 
 export const routes: Routes = [
@@ -16,6 +18,15 @@ export const routes: Routes = [
         path: 'Perfil',
         component: PerfilComponent
     },
+     {
+        path: 'Registro',
+        component: RegistroComponent
+    },
+     {
+        path: 'Entrada',
+        component: EntradasComponent
+    },
+    
     {
         path: 'Admin',
         component: PanelAdmin,

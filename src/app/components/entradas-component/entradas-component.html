@@ -1,1 +1,139 @@
-<p>entradas-component works!</p>
+<section class="match-hero">
+    <div class="container">
+        <div class="text-center">
+            <p class="mb-4" style="color: var(--green-secondary); font-weight: 600; font-size: 0.95rem;">
+                15 Jun 2026 · 21:00 hs
+            </p>
+            <div class="d-flex justify-content-center align-items-center gap-4 gap-md-5 my-4">
+                <div class="text-center">
+                    <i class="bi bi-shield-shaded fs-1 text-primary"></i>
+                    <h2 class="text-white fw-bold m-0 fs-3">Equipo 1</h2>
+                </div>
+
+                <div class="text-secondary fw-black" style="font-size: 3.5rem; font-weight: 900; opacity: 0.7;">VS
+                </div>
+
+                <div class="text-center">
+                    <i class="bi bi-shield-fill fs-1 text-danger"></i>
+                    <h2 class="text-white fw-bold m-0 fs-3">Equipo 2</h2>
+                </div>
+            </div>
+            <p class="text-light mt-4">
+                <i class="bi bi-geo-alt text-success me-1"></i> Monterrico
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<main class="container my-5">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <span><i class="bi bi-play-fill text-danger me-2"></i> Previa del Partido</span>
+                </div>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/6RsytDOF1lg"
+                        title="Previa del Partido Argentina vs Brasil"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    <span><i class="bi bi-geo-alt-fill text-success me-2"></i> Ubicación del Estadio</span>
+                    <span class="text-muted" style="font-size: 0.85rem; font-weight: 400;">Monterrico
+                    </span>
+                </div>
+
+                <div style="width: 100%; height: 300px;">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Arrowhead+Stadium,+Kansas+City&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="p-3 bg-white border-top">
+                    <h6 class="fw-bold mb-1" style="color: var(--blue-dark);">Monterrico</h6>
+                    <p class="text-muted mb-2 small">Monterrico</p>
+                    <span class="text-success small fw-semibold">Capacidad: 3,400 espectadores</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    Entradas Disponibles
+                </div>
+                <div class="card-body p-0">
+                    <div class="ticket-item">
+                        <div>
+                            <h6 class="fw-bold mb-1" style="color: var(--blue-dark);">General</h6>
+                            <span class="status-disp">Disponible</span>
+                        </div>
+                        <div class="ticket-price">$388.700</div>
+                    </div>
+                    <div class="ticket-item">
+                        <div>
+                            <h6 class="fw-bold mb-1" style="color: var(--blue-dark);">Platino</h6>
+                            <span class="status-disp">Disponible</span>
+                        </div>
+                        <div class="ticket-price">$388.700</div>
+                    </div>
+                    <div class="ticket-item ticket-agotado">
+                        <div>
+                            <h6 class="fw-bold mb-1" style="color: var(--blue-dark);">VIP</h6>
+                            <span class="status-ago">Agotado</span>
+                        </div>
+                        <div class="ticket-price" style="color: #94a3b8;">$388.700</div>
+                    </div>
+                    <div class="p-4">
+                        <button class="btn btn-green w-100 py-2 fs-6">Comprar Entradas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    Recordatorio
+                </div>
+                <div class="card-body p-4 text-center">
+                    <button
+                        class="btn btn-outline-primary w-100 py-2 d-flex align-items-center justify-content-center fw-semibold">
+                        <i class="bi bi-calendar-event me-2"></i> Agendar en Calendario
+                    </button>
+                </div>
+            </div>
+
+            <div class="custom-card">
+                <div class="custom-card-header">
+                    Info del Partido
+                </div>
+                <div class="card-body p-4">
+                    <div class="info-row">
+                        <span class="info-label">Fecha</span>
+                        <span class="info-value">15 Jun 2026</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Hora</span>
+                        <span class="info-value">21:00 hs (UTC-5)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Cancha</span>
+                        <span class="info-value">Monterrico</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Ciudad</span>
+                        <span class="info-value">Monterrico</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
