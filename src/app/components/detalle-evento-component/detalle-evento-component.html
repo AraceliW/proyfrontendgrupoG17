@@ -1,0 +1,139 @@
+<section class="detalle-hero" *ngIf="evento">
+  <div class="container text-center py-5">
+
+    <p class="text-green fw-bold mb-4">
+      {{ evento.descripcion }} · {{ evento.fecha }} · {{ evento.hora }} hs
+    </p>
+
+    <div class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
+      <div>
+        <i class="bi bi-shield-shaded equipo-icon text-primary"></i>
+        <h2 class="fw-bold mt-3">{{ obtenerEquipo1(evento.nombre) }}</h2>
+      </div>
+
+      <h1 class="vs-grande">VS</h1>
+
+      <div>
+        <i class="bi bi-shield-fill equipo-icon text-danger"></i>
+        <h2 class="fw-bold mt-3">{{ obtenerEquipo2(evento.nombre) }}</h2>
+      </div>
+    </div>
+
+    <p class="mt-4 text-light">
+      <i class="bi bi-geo-alt text-green"></i>
+      {{ evento.estadio }} · {{ evento.ciudad }}
+    </p>
+
+  </div>
+</section>
+
+<main class="container my-5" *ngIf="evento">
+
+  <section class="detalle-card mb-4">
+    <h5 class="fw-bold mb-3">
+      <i class="bi bi-play-fill text-danger"></i>
+      Previa del Partido
+    </h5>
+
+    <div class="ratio ratio-16x9" *ngIf="videoUrl">
+      <iframe [src]="videoUrl" allowfullscreen></iframe>
+    </div>
+
+    <p *ngIf="!evento.youtubeVideoId" class="text-muted mb-0">
+      Este evento todavía no tiene video cargado.
+    </p>
+  </section>
+
+  <section class="detalle-card mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-bold mb-0">
+        <i class="bi bi-geo-alt-fill text-success"></i>
+        Ubicación del Estadio
+      </h5>
+      <span class="text-muted">{{ evento.estadio }}, {{ evento.ciudad }}</span>
+    </div>
+
+    <div class="mapa-placeholder">
+      <div>
+        <i class="bi bi-map fs-1"></i>
+        <p class="mb-0 mt-2">Mapa del estadio</p>
+      </div>
+    </div>
+
+    <h5 class="fw-bold mt-3">{{ evento.estadio }}</h5>
+    <p class="text-muted mb-1">{{ evento.direccion }}</p>
+    <p class="text-green fw-bold mb-0">{{ evento.ciudad }}</p>
+  </section>
+
+<section class="detalle-card mb-4">
+  <h5 class="fw-bold mb-4">Entradas Disponibles</h5>
+
+  <div
+    class="entrada-opcion"
+    *ngFor="let entrada of evento.entradas"
+    [class.seleccionada]="entradaSeleccionadaId === entrada.id"
+    (click)="seleccionarEntrada(entrada.id)"
+  >
+    <div>
+      <h5>{{ entrada.nombre }}</h5>
+      <small class="text-success" *ngIf="entrada.stockDisponible > 0">
+        Disponible
+      </small>
+      <small class="text-danger" *ngIf="entrada.stockDisponible <= 0">
+        Agotado
+      </small>
+      <p class="text-muted mb-0">Stock: {{ entrada.stockDisponible }}</p>
+    </div>
+
+    <strong>${{ entrada.precio }}</strong>
+  </div>
+
+  <div class="cantidad-box mt-4">
+    <label class="form-label fw-bold">Cantidad</label>
+
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-outline-dark" (click)="disminuirCantidad()">-</button>
+
+      <strong class="fs-4">{{ cantidad }}</strong>
+
+      <button class="btn btn-outline-dark" (click)="aumentarCantidad()">+</button>
+    </div>
+  </div>
+
+  <button
+    class="btn btn-green w-100 mt-4 py-3 fw-bold"
+    (click)="comprarEntradas()">
+    Comprar Entradas
+  </button>
+</section>
+
+  <section class="detalle-card">
+    <h5 class="fw-bold mb-4">Info del Partido</h5>
+
+    <div class="info-line">
+      <span>Categoría</span>
+      <strong>{{ evento.categoriaDeporte }}</strong>
+    </div>
+
+    <div class="info-line">
+      <span>Fecha</span>
+      <strong>{{ evento.fecha }}</strong>
+    </div>
+
+    <div class="info-line">
+      <span>Hora</span>
+      <strong>{{ evento.hora }} hs</strong>
+    </div>
+
+    <div class="info-line">
+      <span>Estadio</span>
+      <strong>{{ evento.estadio }}</strong>
+    </div>
+
+    <div class="info-line">
+      <span>Ciudad</span>
+      <strong>{{ evento.ciudad }}</strong>
+    </div>
+  </section>
+
+</main>

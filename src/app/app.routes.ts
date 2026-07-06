@@ -7,6 +7,9 @@ import { PartidosComponent } from './components/partidos-component/partidos-comp
 import { PanelAdmin } from './pages/panel-admin/panel-admin';
 import { RegistroComponent } from './components/registro-component/registro-component';
 import { EntradasComponent } from './components/entradas-component/entradas-component';
+import { LoginComponent } from './components/login-component/login-component';
+import { DetalleEventoComponent } from './components/detalle-evento-component/detalle-evento-component';
+import { ResumenCompraComponent } from './components/resumen-compra-component/resumen-compra-component';
 
 
 export const routes: Routes = [
@@ -22,9 +25,21 @@ export const routes: Routes = [
         path: 'Registro',
         component: RegistroComponent
     },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
      {
         path: 'Entrada',
         component: EntradasComponent
+    },
+    {
+        path: 'Entrada/:id',
+        component: DetalleEventoComponent
+    },
+    {
+        path:'resumen-compra/:id',
+        component:ResumenCompraComponent
     },
     
     {

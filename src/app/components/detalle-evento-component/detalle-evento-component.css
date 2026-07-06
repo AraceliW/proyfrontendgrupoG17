@@ -1,0 +1,77 @@
+.detalle-hero {
+  background-color: var(--blue-dark);
+  color: white;
+}
+
+.text-green {
+  color: #00c853;
+}
+
+.equipo-icon {
+  font-size: 5rem;
+}
+
+.vs-grande {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.detalle-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.mapa-placeholder {
+  height: 280px;
+  background: #e9eef5;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #506070;
+}
+
+.entrada-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.entrada-seleccionada {
+  background-color: #e9f7ef;
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.entrada-opcion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.entrada-opcion:hover {
+  background: #f3f8f3;
+}
+
+.entrada-opcion.seleccionada {
+  border: 2px solid #2e7d32;
+  background: #e9f7ef;
+}
