@@ -53,11 +53,13 @@
       <span class="text-muted">{{ evento.estadio }}, {{ evento.ciudad }}</span>
     </div>
 
-    <div class="mapa-placeholder">
-      <div>
-        <i class="bi bi-map fs-1"></i>
-        <p class="mb-0 mt-2">Mapa del estadio</p>
-      </div>
+    <div class="ratio ratio-16x9 rounded overflow-hidden" *ngIf="mapaUrl">
+      <iframe
+        [src]="mapaUrl"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
 
     <h5 class="fw-bold mt-3">{{ evento.estadio }}</h5>

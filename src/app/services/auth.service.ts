@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModel } from '../models/usuario.model';
 
 interface LoginResponse {
@@ -15,6 +15,9 @@ interface LoginResponse {
 export class AuthService {
 
   private apiUrl = 'http://localhost:3000/api/auth';
+
+  private usuarioSubject = new BehaviorSubject<UsuarioModel | null>(this.obtenerUsuario());
+  usuarioActual$ = this.usuarioSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +35,7 @@ export class AuthService {
   guardarSesion(token: string, usuario: UsuarioModel): void {
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
+    this.usuarioSubject.next(usuario);
   }
 
   obtenerUsuario(): UsuarioModel | null {
@@ -50,9 +54,13 @@ export class AuthService {
   esAdmin(): boolean {
     return this.obtenerUsuario()?.rol === 'admin';
   }
+  esCliente(): boolean {
+    return this.obtenerUsuario()?.rol === 'cliente';
+  }
 
   cerrarSesion(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
+    this.usuarioSubject.next(null);
   }
 }

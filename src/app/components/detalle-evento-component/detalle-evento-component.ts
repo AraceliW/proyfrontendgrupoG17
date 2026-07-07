@@ -19,6 +19,8 @@ export class DetalleEventoComponent implements OnInit {
     videoUrl: SafeResourceUrl | null = null;
     entradaSeleccionadaId: number | null = null;
     cantidad: number = 1;
+    mapaUrl: SafeResourceUrl | null = null;
+    
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +44,12 @@ export class DetalleEventoComponent implements OnInit {
             `https://www.youtube.com/embed/${data.youtubeVideoId}`
           );
         }
+        if (data.latitud && data.longitud) {
+          this.mapaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `https://www.google.com/maps?q=${data.latitud},${data.longitud}&hl=es&z=15&output=embed`
+          );
+        }
+        this.cdr.detectChanges();
         console.log('Detalle evento:', data);
       },
       error: (error) => {

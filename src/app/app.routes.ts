@@ -10,6 +10,9 @@ import { EntradasComponent } from './components/entradas-component/entradas-comp
 import { LoginComponent } from './components/login-component/login-component';
 import { DetalleEventoComponent } from './components/detalle-evento-component/detalle-evento-component';
 import { ResumenCompraComponent } from './components/resumen-compra-component/resumen-compra-component';
+import { PagoExitoComponent } from './components/pago-exito-component/pago-exito-component';
+import { PagoErrorComponent } from './components/pago-error-component/pago-error-component';
+import { PagoPendienteComponent } from './components/pago-pendiente-component/pago-pendiente-component';
 
 
 export const routes: Routes = [
@@ -21,13 +24,13 @@ export const routes: Routes = [
         path: 'Perfil',
         component: PerfilComponent
     },
-     {
-        path: 'Registro',
-        component: RegistroComponent
-    },
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'registro',
+        component: RegistroComponent      
     },
      {
         path: 'Entrada',
@@ -40,6 +43,18 @@ export const routes: Routes = [
     {
         path:'resumen-compra/:id',
         component:ResumenCompraComponent
+    },
+    {
+        path: 'pago/exito',
+        component: PagoExitoComponent
+    },
+    {
+        path: 'pago/error',
+        component: PagoErrorComponent
+    },
+    {
+        path: 'pago/pendiente',
+        component: PagoPendienteComponent
     },
     
     {
