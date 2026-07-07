@@ -43,6 +43,7 @@
  .content-card {
      background: white;
      border-radius: 12px;
+     max-width: none;
      border: 1px solid var(--card-border);
      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
      padding: 24px;
@@ -88,7 +89,7 @@
  .search-container {
      position: relative;
      flex-grow: 1;
-     margin-right: 15px;
+     margin-right: 0;
  }
 
  .search-container i {
@@ -126,6 +127,15 @@
  .table-responsive {
      margin-top: 24px;
  }
+
+.table {
+    width: 100%;
+ }
+
+.table th,
+.table td {
+    white-space: nowrap;
+}
 
  .table th {
      font-size: 0.75rem;

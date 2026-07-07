@@ -1,0 +1,117 @@
+<div class="main-wrapper">
+  <div class="login-header">
+    <i class="bi bi-trophy trophy-icon"></i>
+    <h2>DIBUTICK</h2>
+    <p>Accede a tu cuenta</p>
+  </div>
+
+  <div class="login-card">
+    <div class="login-tabs">
+      <div class="login-tab"
+           [class.active]="modo === 'login'"
+           (click)="cambiarModo('login')">
+        INICIAR SESIÓN
+      </div>
+
+      <div class="login-tab"
+           [class.active]="modo === 'registro'"
+           (click)="cambiarModo('registro')">
+        REGISTRARSE
+      </div>
+    </div>
+
+    <div class="login-body">
+      <div id="googleButton" class="d-flex justify-content-center"></div>
+
+      <div class="divider">
+        <span>o con email</span>
+      </div>
+
+      <div *ngIf="errorMensaje" class="alert alert-danger">
+        {{ errorMensaje }}
+      </div>
+
+      <div *ngIf="modo === 'login'">
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
+          <div class="mb-3">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" placeholder="carlos@ejemplo.com" formControlName="email">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" formControlName="password">
+          </div>
+
+          <div class="text-end mb-4">
+            <a class="forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
+
+      <div *ngIf="modo === 'registro'">
+        <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" placeholder="Carlos" formControlName="nombre">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Apellido</label>
+              <input type="text" class="form-control" placeholder="García" formControlName="apellido">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">DNI</label>
+            <input type="text" class="form-control" placeholder="12345678" formControlName="dni">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" placeholder="carlos@ejemplo.com" formControlName="email">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="text" class="form-control" placeholder="3881234567" formControlName="telefono">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" formControlName="password">
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Confirmar contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" formControlName="confirmarPassword">
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Crear Cuenta
+          </button>
+
+          <p class="terms-text">
+            Al registrarte, aceptas nuestros <a href="#">Términos de Servicio</a> y <a href="#">Política de Privacidad</a>.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-text" *ngIf="modo === 'login'">
+    ¿No tienes cuenta?
+    <a style="cursor: pointer;" (click)="cambiarModo('registro')">Regístrate</a>
+  </div>
+
+  <div class="register-text" *ngIf="modo === 'registro'">
+    ¿Ya tienes cuenta?
+    <a style="cursor: pointer;" (click)="cambiarModo('login')">Inicia Sesión</a>
+  </div>
+</div>

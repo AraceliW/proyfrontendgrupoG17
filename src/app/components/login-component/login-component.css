@@ -1,0 +1,209 @@
+.main-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header .trophy-icon {
+    font-size: 2.5rem;
+    color: #fbbf24;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    font-weight: 800;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.login-card {
+    background: white;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+}
+
+.login-tabs {
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.login-tab {
+    flex: 1;
+    text-align: center;
+    padding: 18px 10px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-tab.active {
+    background-color: var(--blue-dark);
+    color: white;
+    border-bottom: none;
+}
+
+.login-tab:not(.active):hover {
+    background-color: #f8fafc;
+}
+
+.login-body {
+    padding: 32px;
+}
+
+.btn-google {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: white;
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #334155;
+    transition: background 0.2s;
+}
+
+.btn-google:hover {
+    background-color: #f8fafc;
+}
+
+.btn-google svg {
+    width: 20px;
+    height: 20px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.divider span {
+    padding: 0 15px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+.form-control:focus {
+    border-color: #86efac;
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.15);
+}
+
+.forgot-link {
+    color: var(--text-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: var(--green-brand);
+    text-decoration: underline;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--blue-dark);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #1e293b;
+}
+
+.terms-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.terms-text a {
+    color: var(--text-green);
+    text-decoration: underline;
+}
+
+.terms-text a:hover {
+    color: var(--green-brand);
+}
+
+.register-text {
+    margin-top: 24px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.register-text a {
+    color: var(--text-green);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+.d-none {
+    display: none !important;
+}

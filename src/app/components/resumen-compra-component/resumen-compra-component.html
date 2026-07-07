@@ -1,0 +1,60 @@
+<main class="container my-5" *ngIf="compra">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card shadow border-0 rounded-4">
+        <div class="card-body p-4">
+
+          <h3 class="fw-bold mb-4 text-center">Resumen de Compra</h3>
+
+          <p><strong>Código:</strong> {{ compra.codigoCompra }}</p>
+          <p><strong>Estado:</strong> {{ compra.estado }}</p>
+
+          <hr>
+
+          <div *ngFor="let detalle of compra.detalles">
+            <h5 class="fw-bold">
+              {{ detalle.tipoEntrada?.evento?.nombre }}
+            </h5>
+
+            <p class="text-muted">
+              {{ detalle.tipoEntrada?.nombre }}
+            </p>
+
+            <div class="d-flex justify-content-between">
+              <span>Cantidad</span>
+              <strong>{{ detalle.cantidad }}</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <span>Precio unitario</span>
+              <strong>${{ detalle.precioUnitario }}</strong>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <span>Subtotal</span>
+              <strong>${{ detalle.subtotal }}</strong>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between fs-4 fw-bold">
+            <span>Total</span>
+            <span class="text-success">${{ compra.total }}</span>
+          </div>
+
+          <div class="alert alert-warning text-center mt-4">
+            Reserva válida por:
+            <strong>{{ tiempoRestante }}</strong>
+          </div>
+
+          <button class="btn btn-green w-100 py-3 fw-bold"
+                  (click)="confirmarPago()">
+            Confirmar y pagar con Mercado Pago
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
