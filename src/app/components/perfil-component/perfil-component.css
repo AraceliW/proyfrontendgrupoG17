@@ -1,51 +1,170 @@
+.perfil-page {
+  max-width: 1200px;
+}
+
+.perfil-card,
+.content-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
 .profile-banner {
-    height: 120px;
-    background-color: #1b4332;
-    border-radius: 8px 8px 0 0;
+  height: 120px;
+  background: #184c35;
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 28px 24px;
 }
 
 .profile-img-container {
-    margin-top: -60px;
-    margin-left: 20px;
-    border: 4px solid white;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    background: #ddd;
-    overflow: hidden;
+  margin-top: -45px;
 }
 
-.status-badge {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 50px;
+.profile-img-container img {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
 }
 
-.badge-confirmed {
-    background: #d4edda;
-    color: #155724;
+.perfil-info h3 {
+  margin: 0;
+  font-weight: 800;
 }
 
-.badge-canceled {
-    background: #f8d7da;
-    color: #721c24;
+.perfil-info p,
+.perfil-info small {
+  color: #64748b;
 }
 
-.stat-card {
-    border: none;
-    background: #f8f9fa;
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px 24px 28px;
 }
 
-.card {
-    position: relative;
+.stat-box {
+  width: 170px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid #eef2f7;
+}
 
+.stat-box i {
+  font-size: 1.4rem;
+  color: #198754;
+}
+
+.stat-box h4 {
+  font-weight: 800;
+  margin: 8px 0 4px;
+}
+
+.stat-box span {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.perfil-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-bottom: 28px;
+}
+
+.perfil-tabs button {
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.perfil-tabs button.active {
+  background: #0d6efd;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(13,110,253,.18);
+}
+
+.perfil-content {
+  margin-top: 24px;
+}
+
+.content-card {
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.datos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.datos-grid span {
+  display: block;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.datos-grid strong {
+  font-size: 1rem;
 }
 
 .ticket-card {
-  border-radius: 16px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+  height: 100%;
+  background: #fff;
 }
 
-.ticket-card:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+.ticket-card h5 {
+  font-weight: 800;
+}
+
+.ticket-card p,
+.ticket-card small {
+  color: #64748b;
+}
+
+.reclamo-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 18px;
+}
+
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats-row {
+    flex-direction: column;
+  }
+
+  .stat-box {
+    width: 100%;
+  }
+
+  .perfil-tabs {
+    flex-wrap: wrap;
+  }
+
+  .datos-grid {
+    grid-template-columns: 1fr;
+  }
 }

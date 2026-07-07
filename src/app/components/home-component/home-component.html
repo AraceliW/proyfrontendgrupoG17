@@ -3,9 +3,6 @@
         <p class="text-green nav-link-look fw-bold mb-2 small">VIVE EL DEPORTE DE PRIMERA MANO</p>
         <h1 class="display-3 fw-black mb-3" style="font-weight: 900; letter-spacing: -1px;">TU ENTRADA</h1>
         <p class="fs-5 mb-4 text-light">Consigue tus entradas para los mejores partidos en tu ciudad.</p>
-        <a routerLink="/Entrada" class="btn btn-green px-4 py-2 rounded-3">
-            Ver Entradas <i class="bi bi-arrow-right ms-2"></i>
-        </a>
     </div>
 </header>
 
@@ -14,7 +11,7 @@
         <h3 class="fw-black mb-0" style="color: var(--blue-dark); font-weight: 900;">PRÓXIMOS PARTIDOS</h3>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div id="eventos" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
         <div class="col" *ngFor="let evento of eventos">
             <div class="card match-card h-100">
@@ -69,6 +66,4 @@
         </div>
 
     </div>
-<app-panel-perfil></app-panel-perfil>
-
 </main>

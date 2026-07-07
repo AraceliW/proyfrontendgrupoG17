@@ -58,6 +58,21 @@ export class AuthService {
     return this.obtenerUsuario()?.rol === 'cliente';
   }
 
+  loginGoogle(credential: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/google`, {
+      credential
+    });
+  }
+  actualizarPerfil(datos: any): Observable<any> {
+    const token = this.obtenerToken();
+
+    return this.http.put(`${this.apiUrl}/perfil`, datos, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
   cerrarSesion(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');

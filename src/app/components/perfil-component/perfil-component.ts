@@ -19,6 +19,9 @@ export class PerfilComponent implements OnInit {
   reclamos: any[] = [];
   formReclamo!: FormGroup;
   pestanaActiva: 'datos' | 'entradas' | 'compras' | 'reclamos' = 'datos';
+  editandoPerfil = false;
+  formPerfil!: FormGroup;
+
 
   constructor(
     private authService: AuthService,
@@ -30,6 +33,12 @@ export class PerfilComponent implements OnInit {
     this.formReclamo = this.fb.group({
       asunto: ['', Validators.required],
       descripcion: ['', Validators.required]
+    });
+    this.formPerfil = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      dni: [''],
+      telefono: ['']
     });
   }
 
@@ -95,4 +104,40 @@ export class PerfilComponent implements OnInit {
       error: (error) => console.error('Error al crear reclamo', error)
     });
   }
+
+  abrirEditarPerfil(): void {
+  this.editandoPerfil = true;
+
+  this.formPerfil.patchValue({
+    nombre: this.usuario?.nombre,
+    apellido: this.usuario?.apellido,
+    dni: this.usuario?.dni,
+    telefono: this.usuario?.telefono
+  });
+}
+
+cancelarEditarPerfil(): void {
+  this.editandoPerfil = false;
+}
+
+guardarPerfil(): void {
+  if (this.formPerfil.invalid) {
+    this.formPerfil.markAllAsTouched();
+    return;
+  }
+
+  this.authService.actualizarPerfil(this.formPerfil.value).subscribe({
+    next: (res) => {
+      this.usuario = res.usuario;
+
+      const token = this.authService.obtenerToken();
+      if (token) {
+        this.authService.guardarSesion(token, res.usuario);
+      }
+
+      this.editandoPerfil = false;
+    },
+    error: (error) => console.error('Error al actualizar perfil', error)
+  });
+}
 }

@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+
+
+declare const google: any;
 
 @Component({
   selector: 'app-login-component',
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private ngZone: NgZone,
     private route: ActivatedRoute
   ) {
     this.formLogin = this.fb.group({
@@ -70,6 +74,37 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+  google.accounts.id.initialize({
+    client_id: '1075559199984-plfh236dhcidto67q7v49jhab61fi857.apps.googleusercontent.com',
+    callback: (response: any) => this.loginConGoogle(response)
+  });
+
+  google.accounts.id.renderButton(
+    document.getElementById('googleButton'),
+    {
+      theme: 'outline',
+      size: 'large',
+      width: 360
+    }
+  );
+}
+
+loginConGoogle(response: any): void {
+  this.authService.loginGoogle(response.credential).subscribe({
+    next: (res) => {
+      this.ngZone.run(() => {
+        this.authService.guardarSesion(res.token, res.usuario);
+        this.router.navigate(['/']);
+      });
+    },
+    error: (error) => {
+      this.ngZone.run(() => {
+        this.errorMensaje = error.error?.mensaje || 'Error con Google Login';
+      });
+    }
+  });
+}
   registrar() {
     console.log('Click en registrar');
     console.log(this.formRegistro.value);

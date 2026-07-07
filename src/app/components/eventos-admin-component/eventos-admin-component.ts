@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -37,7 +37,8 @@ export class EventosAdminComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private eventoService: EventoAdminService
+    private eventoService: EventoAdminService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -74,15 +75,18 @@ export class EventosAdminComponent implements OnInit {
   }
   cargarEventos() {
     this.cargando = true;
+
     this.eventoService.obtenerEventos().subscribe({
       next: (eventos) => {
         this.eventos = eventos;
-        this.eventosFiltrados = eventos;
+        this.eventosFiltrados = [...eventos];
         this.cargando = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error(err);
         this.cargando = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -143,35 +147,42 @@ export class EventosAdminComponent implements OnInit {
     });
     if (evento.tiposEntrada) {
       evento.tiposEntrada.forEach(tipo => {
+        const precio = Number(tipo.precio);
+        const stock = Number(tipo.stock ?? 0);
+
         switch (tipo.nombre) {
           case 'General':
             this.formulario.patchValue({
-              generalPrecio: tipo.precio,
-              generalStock: tipo.stock
+              generalPrecio: precio,
+              generalStock: stock
             });
             break;
+
           case 'Popular':
             this.formulario.patchValue({
-              popularPrecio: tipo.precio,
-              popularStock: tipo.stock
+              popularPrecio: precio,
+              popularStock: stock
             });
             break;
+
           case 'Platea':
             this.formulario.patchValue({
-              plateaPrecio: tipo.precio,
-              plateaStock: tipo.stock
+              plateaPrecio: precio,
+              plateaStock: stock
             });
             break;
+
           case 'VIP':
             this.formulario.patchValue({
-              vipPrecio: tipo.precio,
-              vipStock: tipo.stock
+              vipPrecio: precio,
+              vipStock: stock
             });
             break;
+
           case 'Palco':
             this.formulario.patchValue({
-              palcoPrecio: tipo.precio,
-              palcoStock: tipo.stock
+              palcoPrecio: precio,
+              palcoStock: stock
             });
             break;
         }
@@ -190,10 +201,13 @@ export class EventosAdminComponent implements OnInit {
   }
 
   eliminarEvento(id: number) {
-
     if (!confirm('¿Eliminar este evento?')) return;
+
     this.eventoService.eliminarEvento(id).subscribe({
-      next: () => this.cargarEventos(),
+      next: () => {
+        this.eventos = this.eventos.filter(e => e.id !== id);
+        this.eventosFiltrados = this.eventosFiltrados.filter(e => e.id !== id);
+      },
       error: err => console.error(err)
     });
   }

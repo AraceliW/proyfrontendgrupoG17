@@ -3,27 +3,43 @@
         <div class="card-header-actions">
             <div>
                 <h5 class="fw-bold mb-1" style="color: var(--text-dark);">Reporte de Entradas Vendidas</h5>
-                <span style="color: #94a3b8; font-size: 0.9rem;">20 registros</span>
+                <span style="color: #94a3b8; font-size: 0.9rem;">
+                    {{ ventasFiltradas.length }} registros
+                </span>
             </div>
             <div class="d-flex gap-2">
-                <button class="btn-export btn-export-pdf">
+                <button class="btn-export btn-export-pdf" (click)="exportarPDF()">
                     <i class="bi bi-download"></i> Exportar PDF
                 </button>
-                <button class="btn-export btn-export-excel">
+
+                <button class="btn-export btn-export-excel" (click)="exportarExcel()">
                     <i class="bi bi-download"></i> Exportar Excel
                 </button>
             </div>
         </div>
 
-        <div class="d-flex w-100">
-            <div class="search-container">
+        <div class="row g-3 align-items-center mb-4">
+            <div class="col-md-9">
+                <div class="search-container">
                 <i class="bi bi-search"></i>
-                <input type="text" class="search-input" placeholder="Buscar comprador, partido o código...">
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Buscar comprador, evento o código..."
+                    [(ngModel)]="textoBusqueda"
+                    (keyup)="aplicarFiltros()">
+                </div>
             </div>
-            <select class="filter-select">
+
+            <div class="col-md-3">
+                <select
+                class="filter-select w-100"
+                [(ngModel)]="estadoFiltro"
+                (change)="aplicarFiltros()">
                 <option value="todos">Todos</option>
                 <option value="confirmada">Confirmada</option>
-            </select>
+                </select>
+            </div>
         </div>
 
         <div class="table-responsive">
@@ -41,98 +57,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>ENT-1002</td>
-                        <td class="fw-bold">María López</td>
-                        <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">Platino</span></td>
-                        <td class="fw-bold text-dark">$14000</td>
-                        <td>11 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
+                    <tr *ngFor="let compra of ventasFiltradas">
+                        <td>{{ compra.codigoCompra }}</td>
+
+                        <td class="fw-bold">
+                        {{ compra.usuario?.nombre }} {{ compra.usuario?.apellido }}
+                        </td>
+
+                        <td>
+                        {{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}
+                        </td>
+
+                        <td>
+                        <span class="badge-cat">
+                            {{ compra.detalles?.[0]?.tipoEntrada?.nombre }}
+                        </span>
+                        </td>
+
+                        <td class="fw-bold text-dark">
+                        {{ compra.total | currency:'USD':'symbol':'1.0-0' }}
+                        </td>
+
+                        <td>
+                        {{ compra.fechaConfirmacion | date:'dd/MM/yyyy' }}
+                        </td>
+
+                        <td>
+                        <span class="badge-status-conf" *ngIf="compra.estado === 'confirmada'">
+                            Confirmada
+                        </span>
+                        </td>
+
                         <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
+                        <span class="text-muted">-</span>
                         </td>
                     </tr>
-                    <tr>
-                        <td>ENT-1003</td>
-                        <td class="fw-bold">Juan Rodríguez</td>
-                       <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">VIP</span></td>
-                        <td class="fw-bold text-dark">$204000</td>
-                        <td>12 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
+
+                    <tr *ngIf="ventasFiltradas.length === 0">
+                        <td colspan="8" class="text-center py-4 text-muted">
+                        No hay ventas para mostrar.
                         </td>
                     </tr>
-                    <tr>
-                        <td>ENT-1004</td>
-                        <td class="fw-bold">Ana Martínez</td>
-                        <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">Palco</span></td>
-                        <td class="fw-bold text-dark">$350500</td>
-                        <td>13 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ENT-1005</td>
-                        <td class="fw-bold">Pedro Sánchez</td>
-                        <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">General</span></td>
-                        <td class="fw-bold text-dark">$100000</td>
-                        <td>14 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ENT-1006</td>
-                        <td class="fw-bold">Carlos García</td>
-                       <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">Platino</span></td>
-                        <td class="fw-bold text-dark">$140002</td>
-                        <td>15 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ENT-1007</td>
-                        <td class="fw-bold">María López</td>
-                       <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">VIP</span></td>
-                        <td class="fw-bold text-dark">$204000</td>
-                        <td>16 Jun 2026</td>
-                        <td><span class="badge-status-conf">Confirmada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ENT-1008</td>
-                        <td class="fw-bold">Juan Rodríguez</td>
-                        <td>EQUIPO 1 vs EQUIPO 2</td>
-                        <td><span class="badge-cat">Palco</span></td>
-                        <td class="fw-bold text-dark">$350</td>
-                        <td>17 Jun 2026</td>
-                        <td><span class="badge-status-anu">Anulada</span></td>
-                        <td class="text-end">
-                            <i class="bi bi-pencil-square action-icon edit"></i>
-                            <i class="bi bi-trash action-icon delete"></i>
-                        </td>
-                    </tr>
-                </tbody>
+                    </tbody>
             </table>
         </div>
 

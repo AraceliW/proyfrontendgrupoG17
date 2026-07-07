@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PanelPerfil } from '../../pages/panel-perfil/panel-perfil';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomeService } from '../../services/home.service';
@@ -8,7 +7,7 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-home-component',
-  imports: [CommonModule, PanelPerfil, RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
 })
