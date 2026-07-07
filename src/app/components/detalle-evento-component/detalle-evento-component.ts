@@ -7,6 +7,7 @@ import { HomeService } from '../../services/home.service';
 import { CompraService } from '../../services/compra.service';
 import { MercadoPagoService } from '../../services/mercado-pago.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-detalle-evento.component',
@@ -29,6 +30,7 @@ export class DetalleEventoComponent implements OnInit {
     private compraService: CompraService,
     private mercadoPagoService: MercadoPagoService,
     private router: Router,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -79,10 +81,17 @@ export class DetalleEventoComponent implements OnInit {
   }
 
   comprarEntradas(): void {
+
+    if (!this.authService.estaLogueado()) {
+      alert('Debés iniciar sesión para comprar entradas');
+      this.router.navigate(['/login']);
+      return;
+    }
     if (!this.entradaSeleccionadaId) {
       alert('Seleccioná un tipo de entrada');
       return;
     }
+    
 
     this.compraService.reservarCompra(this.entradaSeleccionadaId, this.cantidad)
       .subscribe({

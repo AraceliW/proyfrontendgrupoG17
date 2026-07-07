@@ -1,9 +1,98 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import { CompraService } from '../../services/compra.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReclamoService } from '../../services/reclamo.service';
+
 
 @Component({
   selector: 'app-perfil-component',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './perfil-component.html',
   styleUrl: './perfil-component.css',
 })
-export class PerfilComponent {}
+export class PerfilComponent implements OnInit {
+  usuario: any = null;
+  compras: any[] = [];
+  reclamos: any[] = [];
+  formReclamo!: FormGroup;
+  pestanaActiva: 'datos' | 'entradas' | 'compras' | 'reclamos' = 'datos';
+
+  constructor(
+    private authService: AuthService,
+    private compraService: CompraService,
+    private fb: FormBuilder,
+    private reclamoService: ReclamoService,
+    private router: Router
+  ) {
+    this.formReclamo = this.fb.group({
+      asunto: ['', Validators.required],
+      descripcion: ['', Validators.required]
+    });
+  }
+
+  ngOnInit(): void {
+    this.usuario = this.authService.obtenerUsuario();
+    this.cargarReclamos();
+    this.compraService.obtenerMisCompras().subscribe({
+      next: (data) => {
+        this.compras = data.compras || [];
+      },
+      error: (error) => {
+        console.error('Error al obtener compras', error);
+      }
+    });
+  }
+
+  
+
+  cambiarPestana(
+    pestana: 'datos' | 'entradas' | 'compras' | 'reclamos'
+  ) {
+    this.pestanaActiva = pestana;
+  }
+  totalInvertido(): number {
+    return this.compras
+      .filter(c => c.estado === 'confirmada')
+      .reduce((total, c) => total + Number(c.total), 0);
+  }
+
+  entradasCompradas(): number {
+    return this.compras
+      .filter(c => c.estado === 'confirmada')
+      .reduce((total, c) => {
+        const cantidad = c.detalles?.reduce((suma: number, d: any) => suma + d.cantidad, 0) || 0;
+        return total + cantidad;
+      }, 0);
+  }
+
+  cerrarSesion(): void {
+    this.authService.cerrarSesion();
+    this.router.navigate(['/']);
+  }
+  cargarReclamos(): void {
+    this.reclamoService.misReclamos().subscribe({
+      next: (data) => {
+        this.reclamos = data.reclamos || [];
+      },
+      error: (error) => console.error('Error al obtener reclamos', error)
+    });
+  }
+
+  crearReclamo(): void {
+    if (this.formReclamo.invalid) {
+      this.formReclamo.markAllAsTouched();
+      return;
+    }
+
+    this.reclamoService.crearReclamo(this.formReclamo.value).subscribe({
+      next: () => {
+        this.formReclamo.reset();
+        this.cargarReclamos();
+      },
+      error: (error) => console.error('Error al crear reclamo', error)
+    });
+  }
+}

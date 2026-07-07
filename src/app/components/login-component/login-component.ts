@@ -71,8 +71,13 @@ export class LoginComponent implements OnInit {
   }
 
   registrar() {
+    console.log('Click en registrar');
+    console.log(this.formRegistro.value);
+    console.log('Formulario válido:', this.formRegistro.valid);
+
     if (this.formRegistro.invalid) {
       this.formRegistro.markAllAsTouched();
+      this.errorMensaje = 'Completá todos los campos obligatorios correctamente';
       return;
     }
 

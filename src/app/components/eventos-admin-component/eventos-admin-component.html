@@ -1,0 +1,348 @@
+<div class="container-fluid py-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">
+                <i class="bi bi-calendar-event"></i>
+                Gestión de Eventos
+            </h4>
+        </div>
+        <div class="card-body">
+            <form
+                [formGroup]="formulario"
+                (ngSubmit)="guardarEvento()">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Nombre del Evento
+                        </label>
+                        <input
+                            class="form-control"
+                            formControlName="nombre">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Categoría
+                        </label>
+                        <select
+                            class="form-select"
+                            formControlName="categoriaDeporte">
+                            <option value="">Seleccione...</option>
+                            <option>Fútbol</option>
+                            <option>Basquet</option>
+                            <option>Tenis</option>
+                            <option>Voley</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Descripción
+                    </label>
+                    <textarea
+                        rows="3"
+                        class="form-control"
+                        formControlName="descripcion">
+                    </textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Fecha</label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            formControlName="fecha">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Hora</label>
+                        <input
+                            type="time"
+                            class="form-control"
+                            formControlName="hora">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label>Estadio</label>
+                        <input
+                            class="form-control"
+                            formControlName="estadio">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Ciudad</label>
+                        <input
+                            class="form-control"
+                            formControlName="ciudad">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Dirección</label>
+                        <input
+                            class="form-control"
+                            formControlName="direccion">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Video Youtube</label>
+                    <input
+                        class="form-control"
+                        placeholder="Ej: 6tLxv5EsszA"
+                        formControlName="youtubeVideoId">
+                </div>
+                <div class="mb-4">
+                    <label>Banner</label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        (change)="seleccionarBanner($event)">
+                </div>
+                <hr>
+                    <h5 class="mb-4">
+                        Tipos de Entrada
+                    </h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>General</td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="generalPrecio">
+                                    </td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="generalStock">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Popular</td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="popularPrecio">
+                                    </td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="popularStock">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Platea</td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="plateaPrecio">
+                                    </td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="plateaStock">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>VIP</td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="vipPrecio">
+                                    </td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="vipStock">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Palco</td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="palcoPrecio">
+                                    </td>
+                                    <td>
+                                        <input
+                                        type="number"
+                                        class="form-control"
+                                        formControlName="palcoStock">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-end gap-3 mt-4">
+                        <button
+                        type="button"
+                        class="btn btn-secondary"
+                        (click)="limpiarFormulario()">
+                        Limpiar
+                        </button>
+                        <button
+                        *ngIf="!editando"
+                        type="submit"
+                        class="btn btn-success">
+                        Guardar Evento
+                        </button>
+                        <button
+                        *ngIf="editando"
+                        type="submit"
+                        class="btn btn-warning">
+                        Actualizar Evento
+                        </button>
+                        <button
+                        *ngIf="editando"
+                        type="button"
+                        class="btn btn-danger"
+                        (click)="cancelarEdicion()">
+                        Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+<hr class="my-5">
+<div class="card shadow-sm">
+    <div class="card-header bg-light">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5 class="mb-0">
+                    Eventos Registrados
+                </h5>
+            </div>
+            <div class="col-md-6">
+                <input
+                    class="form-control"
+                    placeholder="Buscar evento..."
+                    [(ngModel)]="textoBusqueda"
+                    (keyup)="buscar()"
+                    name="buscar">
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Banner</th>
+
+                        <th>Evento</th>
+
+                        <th>Fecha</th>
+
+                        <th>Ciudad</th>
+
+                        <th>Estadio</th>
+
+                        <th>Estado</th>
+
+                        <th class="text-center">
+
+                            Acciones
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let evento of eventosFiltrados">
+
+                        <td width="120">
+
+                            <img
+
+                                *ngIf="evento.imagenBanner"
+
+                                [src]="'http://localhost:3000'+evento.imagenBanner"
+
+                                class="img-thumbnail"
+
+                                style="height:70px;width:110px;object-fit:cover;">
+
+                        </td>
+
+                        <td>
+
+                            <strong>
+
+                                {{evento.nombre}}
+
+                            </strong>
+
+                            <br>
+
+                            <small class="text-muted">
+
+                                {{evento.categoriaDeporte}}
+
+                            </small>
+
+                        </td>
+                        <td>
+                            {{evento.fecha | date:'dd/MM/yyyy'}}
+                            <br>
+                            {{evento.hora}}
+                        </td>
+                        <td>
+                            {{evento.ciudad}}
+                        </td>
+                        <td>
+                            {{evento.estadio}}
+                        </td>
+                        <td>
+                            <span
+                                class="badge"
+                                [ngClass]="evento.estado=='activo'
+                                ? 'bg-success'
+                                : 'bg-danger'">
+                                {{evento.estado}}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <button
+                                class="btn btn-warning btn-sm me-2"
+                                (click)="editarEvento(evento)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button
+                                class="btn btn-danger btn-sm"
+                                (click)="eliminarEvento(evento.id!)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="eventosFiltrados.length==0">
+                        <td colspan="7" class="text-center py-5">
+                            No hay eventos registrados
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 export interface TipoEntrada {
-  id: number;
+  id?: number;
   nombre: string;
   descripcion?: string;
   precio: number;
@@ -7,7 +7,7 @@ export interface TipoEntrada {
 }
 
 export interface EventoModel {
-  id: number;
+  id?: number;
   nombre: string;
   descripcion: string;
   categoriaDeporte: string;
@@ -16,12 +16,9 @@ export interface EventoModel {
   estadio: string;
   ciudad: string;
   direccion: string;
-
-  precioDesde: number;
-  estado: string;
-
+  precioDesde?: number;
+  youtubeVideoId?: string;
+  estado?: string;
   imagenBanner?: string;
-  imagenMiniatura?: string;
-  galeriaImagenes?: string[];
   tiposEntrada?: TipoEntrada[];
 }

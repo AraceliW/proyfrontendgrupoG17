@@ -40,3 +40,12 @@
     position: relative;
 
 }
+
+.ticket-card {
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+}
+
+.ticket-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
