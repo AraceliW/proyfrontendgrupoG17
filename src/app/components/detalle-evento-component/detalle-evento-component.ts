@@ -46,11 +46,13 @@ export class DetalleEventoComponent implements OnInit {
             `https://www.youtube.com/embed/${data.youtubeVideoId}`
           );
         }
-        if (data.latitud && data.longitud) {
-          this.mapaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-            `https://www.google.com/maps?q=${data.latitud},${data.longitud}&hl=es&z=15&output=embed`
+        const direccionCompleta =
+          `${data.direccion}, ${data.ciudad}, Argentina`;
+
+          this.mapaUrl =
+          this.sanitizer.bypassSecurityTrustResourceUrl(
+          `https://www.google.com/maps/embed/v1/place?key=AIzaSyBiE1nXqbDu00zxd5ZHeJM78d6cGgnMM7E&q=${encodeURIComponent(direccionCompleta)}`
           );
-        }
         this.cdr.detectChanges();
         console.log('Detalle evento:', data);
       },
