@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class EventoAdminService {
 
-  private api = 'http://localhost:3000/api/eventos';
+  private api = 'https://proybackendgrupog17.onrender.com/api/eventos';
 
   constructor(
     private http: HttpClient,

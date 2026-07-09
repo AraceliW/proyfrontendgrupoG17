@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class CompraService {
 
-  private apiUrl = 'http://localhost:3000/api/compras';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/compras';
 
   constructor(
     private http: HttpClient,

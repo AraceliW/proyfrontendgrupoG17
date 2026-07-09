@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ReporteService {
-  private apiUrl = 'http://localhost:3000/api/reportes';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/reportes';
 
   constructor(private http: HttpClient) {}
 

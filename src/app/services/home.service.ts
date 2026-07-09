@@ -8,7 +8,7 @@ import { EventoModel } from '../models/evento.model';
 })
 export class HomeService {
 
-  private apiUrl = 'http://localhost:3000/api/home';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/home';
 
   constructor(private http: HttpClient) {}
 
