@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class MercadoPagoService {
 
-  private apiUrl = 'http://localhost:3000/api/mercadopago';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/mercadopago';
 
   constructor(
     private http: HttpClient,

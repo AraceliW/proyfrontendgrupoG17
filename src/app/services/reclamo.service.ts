@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ReclamoService {
-  private apiUrl = 'http://localhost:3000/api/reclamos';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/reclamos';
 
   constructor(
     private http: HttpClient,

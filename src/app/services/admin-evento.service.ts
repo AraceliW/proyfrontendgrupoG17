@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class AdminEventoService {
 
-  private apiUrl = 'http://localhost:3000/api/eventos';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/eventos';
 
   constructor(
     private http: HttpClient,

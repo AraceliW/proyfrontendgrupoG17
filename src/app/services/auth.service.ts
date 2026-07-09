@@ -14,7 +14,7 @@ interface LoginResponse {
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://proybackendgrupog17.onrender.com/api/auth';
 
   private usuarioSubject = new BehaviorSubject<UsuarioModel | null>(this.obtenerUsuario());
   usuarioActual$ = this.usuarioSubject.asObservable();
