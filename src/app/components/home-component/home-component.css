@@ -1,44 +1,266 @@
 .hero-section {
-    background: linear-gradient(to right, rgba(11, 19, 32, 0.7), rgba(0, 0, 0, 0.021)),
+    position: relative;
+    background:
+        linear-gradient(
+            to right,
+            rgba(11, 19, 32, 0.88),
+            rgba(11, 19, 32, 0.28)
+        ),
         url('https://timelinecovers.pro/facebook-cover/download/straight-kick-from-a-soccer-athlete-facebook-cover.jpg');
+
     background-size: cover;
     background-position: center;
-    padding: 100px 0;
+    background-repeat: no-repeat;
+
     color: white;
     min-height: 70vh;
+    padding: 80px 0;
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    letter-spacing: 0.5px;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    max-width: 620px;
+    line-height: 1.5;
+}
+
+.section-title {
+    color: var(--blue-dark);
+    font-weight: 900;
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
 }
 
 .match-card {
     border: none;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
 
 .match-header {
     background-color: var(--blue-dark);
     color: white;
     font-size: 0.8rem;
-    padding: 8px 16px;
+    padding: 10px 16px;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 }
 
-.team-flag {
-    width: 50px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 8px;
+.sport-category {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-date {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+
+.teams-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.team-container {
+    min-width: 0;
+}
+
+.team-icon {
+    font-size: 2.7rem;
+    line-height: 1;
 }
 
 .team-name {
+    color: var(--blue-dark);
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--blue-dark);
+    line-height: 1.25;
+
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .vs-text {
-    font-weight: 800;
-    font-size: 1.2rem;
     color: var(--blue-dark);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.event-description {
+    line-height: 1.5;
+}
+
+.event-location {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+}
+
+.event-location i {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ticket-type {
+    font-size: 0.7rem;
+    line-height: 1.3;
+}
+
+.event-price {
+    font-size: 1.25rem;
+}
+
+.ticket-button {
+    background-color: var(--blue-dark);
+    border-color: var(--blue-dark);
+    padding: 9px 18px;
+    white-space: nowrap;
+    border-radius: 8px;
+}
+
+.ticket-button:hover,
+.ticket-button:focus {
+    background-color: #060d18;
+    border-color: #060d18;
+}
+
+.empty-events {
+    min-height: 250px;
+}
+
+/* ==============================
+   TABLETS
+================================ */
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: 55vh;
+        padding: 70px 0;
+        background-position: 60% center;
+    }
+
+    .match-card:hover {
+        transform: none;
+    }
+}
+
+/* ==============================
+   CELULARES
+================================ */
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        min-height: 430px;
+        padding: 60px 0;
+        background-position: 65% center;
+    }
+
+    .hero-title {
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        max-width: 290px;
+    }
+
+    .match-card {
+        border-radius: 12px;
+    }
+
+    .match-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 10px 14px;
+    }
+
+    .match-date {
+        text-align: left;
+        font-size: 0.75rem;
+    }
+
+    .teams-container {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .team-icon {
+        font-size: 2.2rem;
+    }
+
+    .team-name {
+        font-size: 0.8rem;
+    }
+
+    .vs-text {
+        font-size: 0.9rem;
+    }
+
+    .event-footer {
+        border-top: 1px solid #eeeeee;
+        padding-top: 16px;
+    }
+
+    .price-container {
+        text-align: center;
+    }
+
+    .ticket-button {
+        width: 100%;
+        padding: 11px 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-section {
+        min-height: 390px;
+    }
+
+    .teams-container {
+        gap: 5px;
+    }
+
+    .team-icon {
+        font-size: 1.9rem;
+    }
+
+    .team-name {
+        font-size: 0.72rem;
+    }
+
+    .vs-text {
+        font-size: 0.75rem;
+    }
 }

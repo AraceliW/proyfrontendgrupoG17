@@ -1,115 +1,335 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+.dashboard-page {
+    width: 100%;
+}
+
+.filter-card,
+.stat-card,
+.chart-card {
+    background-color: white;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.filter-card {
+    overflow: hidden;
+}
+
+.form-label {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    color: var(--text-dark);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #86efac;
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.15);
+}
+
+.dashboard-filter-button {
+    min-height: 44px;
+    border-radius: 8px;
+    font-weight: 600;
+}
 
 .stat-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     height: 100%;
+    min-height: 180px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
 .icon-box {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    margin-bottom: 15px;
 }
 
 .bg-icon-green {
-    background: #dcfce7;
+    background-color: #dcfce7;
     color: #16a34a;
 }
 
 .bg-icon-blue {
-    background: #dbeafe;
+    background-color: #dbeafe;
     color: #2563eb;
 }
 
 .bg-icon-orange {
-    background: #ffedd5;
+    background-color: #ffedd5;
     color: #ea580c;
 }
 
 .bg-icon-purple {
-    background: #f3e8ff;
+    background-color: #f3e8ff;
     color: #9333ea;
 }
 
 .stat-value {
-    font-size: 1.8rem;
-    font-weight: 800;
+    margin: auto 0 4px;
     color: var(--text-dark);
-    margin: 0;
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
 }
 
 .stat-label {
+    margin: 0;
     color: var(--text-muted);
     font-size: 0.85rem;
-    margin: 0;
 }
 
 .badge-trend {
-    background: #dcfce7;
+    flex-shrink: 0;
+    background-color: #dcfce7;
     color: #16a34a;
     padding: 4px 8px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .chart-card {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     height: 100%;
+    min-height: 390px;
+    padding: 24px;
+    overflow: hidden;
+}
+
+.chart-heading {
+    min-width: 0;
 }
 
 .chart-title {
-    font-weight: 700;
-    color: var(--text-dark);
     margin-bottom: 2px;
+    color: var(--text-dark);
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .chart-subtitle {
+    margin-bottom: 20px;
     color: var(--text-muted);
     font-size: 0.85rem;
-    margin-bottom: 20px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.chart-container-bar {
+    height: 300px;
+}
+
+.chart-container-donut {
+    height: 200px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    max-width: 100%;
+    height: 100% !important;
 }
 
 .custom-legend {
-    margin-top: 20px;
+    display: grid;
+    gap: 10px;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    gap: 16px;
     font-size: 0.9rem;
 }
 
 .legend-label {
+    min-width: 0;
     display: flex;
     align-items: center;
     color: var(--text-muted);
 }
 
+.legend-label span:last-child {
+    overflow-wrap: anywhere;
+}
+
 .legend-dot {
     width: 12px;
     height: 12px;
+    flex: 0 0 12px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
 .legend-value {
-    font-weight: 700;
+    flex-shrink: 0;
     color: var(--text-dark);
+    font-weight: 700;
+}
+
+@media (max-width: 1199.98px) {
+    .chart-card {
+        min-height: auto;
+    }
+
+    .chart-container-bar {
+        height: 320px;
+    }
+
+    .chart-container-donut {
+        height: 240px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .stat-card {
+        min-height: 170px;
+    }
+
+    .chart-card {
+        padding: 22px;
+    }
+
+    .chart-container-bar {
+        height: 300px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .dashboard-page {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .filter-card {
+        padding: 18px !important;
+    }
+
+    .stat-card {
+        min-height: 155px;
+        padding: 18px;
+    }
+
+    .chart-card {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    .chart-title {
+        font-size: 1rem;
+    }
+
+    .chart-container-bar {
+        height: 270px;
+    }
+
+    .chart-container-donut {
+        height: 220px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-page {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .filter-card {
+        padding: 15px !important;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 16px;
+    }
+
+    .stat-card {
+        min-height: 145px;
+        padding: 16px;
+    }
+
+    .stat-card-header {
+        margin-bottom: 12px;
+    }
+
+    .icon-box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .stat-value {
+        font-size: 1.45rem;
+    }
+
+    .chart-card {
+        padding: 16px;
+    }
+
+    .chart-subtitle {
+        margin-bottom: 16px;
+    }
+
+    .chart-container-bar {
+        height: 250px;
+    }
+
+    .chart-container-donut {
+        height: 200px;
+    }
+
+    .legend-item {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 400px) {
+    .stat-card {
+        min-height: 135px;
+    }
+
+    .badge-trend {
+        font-size: 0.68rem;
+        padding: 4px 7px;
+    }
+
+    .chart-container-bar {
+        height: 230px;
+    }
+
+    .chart-container-donut {
+        height: 185px;
+    }
+
+    .legend-item {
+        font-size: 0.82rem;
+    }
 }

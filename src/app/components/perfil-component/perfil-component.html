@@ -1,13 +1,15 @@
-<div class="perfil-page container my-4">
+<div class="perfil-page container-fluid container-xl my-3 my-md-4 px-2 px-sm-3">
 
   <div class="perfil-card shadow-sm">
+
     <div class="profile-banner"></div>
 
     <div class="perfil-header">
+
       <div class="profile-img-container">
         <img
           src="https://images.unsplash.com/photo-1564564244660-5d73c057f2d2?q=80&w=1176&auto=format&fit=crop"
-          alt="Foto perfil">
+          alt="Foto de perfil">
       </div>
 
       <div class="perfil-info">
@@ -16,12 +18,18 @@
         <small>{{ usuario?.email }}</small>
       </div>
 
-        <button class="btn btn-outline-secondary btn-sm ms-auto" (click)="abrirEditarPerfil()">
-            Editar Perfil
-        </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-sm edit-profile-button ms-lg-auto"
+        (click)="abrirEditarPerfil()">
+        <i class="bi bi-pencil-square me-1"></i>
+        Editar Perfil
+      </button>
+
     </div>
 
     <div class="stats-row">
+
       <div class="stat-box">
         <i class="bi bi-ticket-detailed"></i>
         <h4>{{ entradasCompradas() }}</h4>
@@ -39,218 +47,428 @@
         <h4>4</h4>
         <span>Partidos Asistidos</span>
       </div>
+
     </div>
 
     <div class="perfil-tabs">
-      <button [class.active]="pestanaActiva === 'datos'" (click)="cambiarPestana('datos')">
-        <i class="bi bi-person"></i> Datos
+
+      <button
+        type="button"
+        [class.active]="pestanaActiva === 'datos'"
+        (click)="cambiarPestana('datos')">
+        <i class="bi bi-person"></i>
+        <span>Datos</span>
       </button>
 
-      <button [class.active]="pestanaActiva === 'entradas'" (click)="cambiarPestana('entradas')">
-        <i class="bi bi-qr-code"></i> Mis Entradas
+      <button
+        type="button"
+        [class.active]="pestanaActiva === 'entradas'"
+        (click)="cambiarPestana('entradas')">
+        <i class="bi bi-qr-code"></i>
+        <span>Mis Entradas</span>
       </button>
 
-      <button [class.active]="pestanaActiva === 'compras'" (click)="cambiarPestana('compras')">
-        <i class="bi bi-bag-check"></i> Compras
+      <button
+        type="button"
+        [class.active]="pestanaActiva === 'compras'"
+        (click)="cambiarPestana('compras')">
+        <i class="bi bi-bag-check"></i>
+        <span>Compras</span>
       </button>
 
-      <button [class.active]="pestanaActiva === 'reclamos'" (click)="cambiarPestana('reclamos')">
-        <i class="bi bi-chat-dots"></i> Reclamos
+      <button
+        type="button"
+        [class.active]="pestanaActiva === 'reclamos'"
+        (click)="cambiarPestana('reclamos')">
+        <i class="bi bi-chat-dots"></i>
+        <span>Reclamos</span>
       </button>
+
     </div>
+
   </div>
 
-  <div class="content-card mt-3" *ngIf="editandoPerfil">
-  <h5>Editar Perfil</h5>
-  <hr>
+  <div
+    class="content-card mt-3"
+    *ngIf="editandoPerfil">
 
-  <form [formGroup]="formPerfil" (ngSubmit)="guardarPerfil()">
-    <div class="row g-3">
-      <div class="col-md-6">
-        <label class="form-label">Nombre</label>
-        <input class="form-control" formControlName="nombre">
+    <h5>Editar Perfil</h5>
+    <hr>
+
+    <form
+      [formGroup]="formPerfil"
+      (ngSubmit)="guardarPerfil()">
+
+      <div class="row g-3">
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Nombre</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nombre">
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Apellido</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="apellido">
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">DNI</label>
+
+          <input
+            type="text"
+            inputmode="numeric"
+            class="form-control"
+            formControlName="dni">
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Teléfono</label>
+
+          <input
+            type="tel"
+            class="form-control"
+            formControlName="telefono">
+        </div>
+
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Apellido</label>
-        <input class="form-control" formControlName="apellido">
+      <div class="profile-form-actions d-flex flex-column flex-sm-row gap-2 mt-4">
+
+        <button
+          class="btn btn-success"
+          type="submit">
+          <i class="bi bi-check-circle me-1"></i>
+          Guardar cambios
+        </button>
+
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="cancelarEditarPerfil()">
+          Cancelar
+        </button>
+
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">DNI</label>
-        <input class="form-control" formControlName="dni">
-      </div>
+    </form>
 
-      <div class="col-md-6">
-        <label class="form-label">Teléfono</label>
-        <input class="form-control" formControlName="telefono">
-      </div>
-    </div>
-
-    <div class="d-flex gap-2 mt-4">
-      <button class="btn btn-success" type="submit">Guardar cambios</button>
-      <button class="btn btn-outline-secondary" type="button" (click)="cancelarEditarPerfil()">Cancelar</button>
-    </div>
-  </form>
-</div>
+  </div>
 
   <div class="perfil-content">
 
-    <div class="content-card" *ngIf="pestanaActiva === 'datos'">
+    <div
+      class="content-card"
+      *ngIf="pestanaActiva === 'datos'">
+
       <h5>Datos Personales</h5>
       <hr>
 
       <div class="datos-grid">
-        <div>
+
+        <div class="dato-item">
           <span>Nombre</span>
           <strong>{{ usuario?.nombre }} {{ usuario?.apellido }}</strong>
         </div>
 
-        <div>
+        <div class="dato-item">
           <span>Email</span>
           <strong>{{ usuario?.email }}</strong>
         </div>
 
-        <div>
+        <div class="dato-item">
           <span>DNI</span>
           <strong>{{ usuario?.dni || 'No cargado' }}</strong>
         </div>
 
-        <div>
+        <div class="dato-item">
           <span>Teléfono</span>
           <strong>{{ usuario?.telefono || 'No cargado' }}</strong>
         </div>
 
-        <div>
+        <div class="dato-item">
           <span>Nacionalidad</span>
           <strong>{{ usuario?.nacionalidad || 'No cargada' }}</strong>
         </div>
 
-        <div>
+        <div class="dato-item">
           <span>Ciudad</span>
           <strong>{{ usuario?.ciudad || 'No cargada' }}</strong>
         </div>
+
       </div>
+
     </div>
 
-    <div class="content-card" *ngIf="pestanaActiva === 'entradas'">
+    <div
+      class="content-card"
+      *ngIf="pestanaActiva === 'entradas'">
+
       <h5>Mis Entradas</h5>
       <hr>
 
-      <div class="row g-4">
-        <div class="col-md-6" *ngFor="let compra of compras">
-          <div class="ticket-card" *ngIf="compra.ticket">
-            <div class="d-flex justify-content-between">
-              <div>
-                <h5>{{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}</h5>
-                <p>{{ compra.detalles?.[0]?.tipoEntrada?.evento?.descripcion }}</p>
+      <div class="row g-3 g-md-4">
+
+        <div
+          class="col-12 col-md-6"
+          *ngFor="let compra of compras">
+
+          <div
+            class="ticket-card"
+            *ngIf="compra.ticket">
+
+            <div class="ticket-header">
+
+              <div class="ticket-info">
+                <h5>
+                  {{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}
+                </h5>
+
+                <p>
+                  {{ compra.detalles?.[0]?.tipoEntrada?.evento?.descripcion }}
+                </p>
+
                 <small>
-                  {{ compra.detalles?.[0]?.tipoEntrada?.nombre }} ·
+                  {{ compra.detalles?.[0]?.tipoEntrada?.nombre }}
+                  ·
                   {{ compra.fechaCompra | date:'dd/MM/yyyy' }}
                 </small>
               </div>
 
-              <span class="badge bg-success" *ngIf="compra.ticket.estado === 'activo'">Activo</span>
-              <span class="badge bg-secondary" *ngIf="compra.ticket.estado === 'usado'">Usado</span>
-              <span class="badge bg-danger" *ngIf="compra.ticket.estado === 'cancelado'">Cancelado</span>
+              <div class="ticket-status">
+
+                <span
+                  class="badge bg-success"
+                  *ngIf="compra.ticket.estado === 'activo'">
+                  Activo
+                </span>
+
+                <span
+                  class="badge bg-secondary"
+                  *ngIf="compra.ticket.estado === 'usado'">
+                  Usado
+                </span>
+
+                <span
+                  class="badge bg-danger"
+                  *ngIf="compra.ticket.estado === 'cancelado'">
+                  Cancelado
+                </span>
+
+              </div>
+
             </div>
 
-            <div class="text-center my-3">
-              <img [src]="compra.ticket.codigoQR" width="130" height="130" alt="QR Ticket">
+            <div class="ticket-qr text-center my-3">
+              <img
+                [src]="compra.ticket.codigoQR"
+                alt="Código QR del ticket">
             </div>
 
-            <p class="text-center fw-bold">{{ compra.ticket.codigoTicket }}</p>
+            <p class="ticket-code text-center fw-bold">
+              {{ compra.ticket.codigoTicket }}
+            </p>
 
             <a
               *ngIf="compra.ticket.pdfUrl"
               [href]="'https://proybackendgrupog17.onrender.com' + compra.ticket.pdfUrl"
               target="_blank"
+              rel="noopener noreferrer"
               class="btn btn-outline-dark w-100">
+              <i class="bi bi-file-earmark-pdf me-1"></i>
               Descargar PDF
             </a>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
 
-    <div class="content-card table-responsive" *ngIf="pestanaActiva === 'compras'">
+    <div
+      class="content-card purchases-card"
+      *ngIf="pestanaActiva === 'compras'">
+
       <h5>Historial de Compras</h5>
       <hr>
 
-      <table class="table align-middle">
-        <thead>
-          <tr>
-            <th>CÓDIGO</th>
-            <th>PARTIDO</th>
-            <th>FECHA</th>
-            <th>ASIENTO</th>
-            <th>PRECIO</th>
-            <th>ESTADO</th>
-            <th>TICKET</th>
-            <th>PDF</th>
-          </tr>
-        </thead>
+      <div class="table-responsive purchases-table-wrapper">
 
-        <tbody>
-          <tr *ngFor="let compra of compras">
-            <td>{{ compra.codigoCompra }}</td>
-            <td>{{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}</td>
-            <td>{{ compra.fechaCompra | date:'dd/MM/yyyy' }}</td>
-            <td>{{ compra.detalles?.[0]?.tipoEntrada?.nombre }}</td>
-            <td>${{ compra.total }}</td>
+        <table class="table table-hover align-middle purchases-table">
 
-            <td>
-              <span class="badge bg-success" *ngIf="compra.estado === 'confirmada'">Confirmada</span>
-              <span class="badge bg-warning text-dark" *ngIf="compra.estado === 'pendiente'">Pendiente</span>
-              <span class="badge bg-danger" *ngIf="compra.estado === 'expirada'">Expirada</span>
-            </td>
+          <thead>
+            <tr>
+              <th>CÓDIGO</th>
+              <th>PARTIDO</th>
+              <th>FECHA</th>
+              <th>ASIENTO</th>
+              <th>PRECIO</th>
+              <th>ESTADO</th>
+              <th>TICKET</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
 
-            <td>{{ compra.ticket?.codigoTicket || 'Sin ticket' }}</td>
+          <tbody>
 
-            <td>
-              <a
-                *ngIf="compra.ticket?.pdfUrl"
-                [href]="'https://proybackendgrupog17.onrender.com' + compra.ticket.pdfUrl"
-                target="_blank"
-                class="btn btn-sm btn-outline-dark">
-                PDF
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            <tr *ngFor="let compra of compras">
+
+              <td data-label="Código">
+                {{ compra.codigoCompra }}
+              </td>
+
+              <td data-label="Partido">
+                {{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}
+              </td>
+
+              <td data-label="Fecha">
+                {{ compra.fechaCompra | date:'dd/MM/yyyy' }}
+              </td>
+
+              <td data-label="Asiento">
+                {{ compra.detalles?.[0]?.tipoEntrada?.nombre }}
+              </td>
+
+              <td data-label="Precio">
+                ${{ compra.total }}
+              </td>
+
+              <td data-label="Estado">
+
+                <span
+                  class="badge bg-success"
+                  *ngIf="compra.estado === 'confirmada'">
+                  Confirmada
+                </span>
+
+                <span
+                  class="badge bg-warning text-dark"
+                  *ngIf="compra.estado === 'pendiente'">
+                  Pendiente
+                </span>
+
+                <span
+                  class="badge bg-danger"
+                  *ngIf="compra.estado === 'expirada'">
+                  Expirada
+                </span>
+
+              </td>
+
+              <td data-label="Ticket">
+                {{ compra.ticket?.codigoTicket || 'Sin ticket' }}
+              </td>
+
+              <td data-label="PDF">
+
+                <a
+                  *ngIf="compra.ticket?.pdfUrl"
+                  [href]="'https://proybackendgrupog17.onrender.com' + compra.ticket.pdfUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-sm btn-outline-dark pdf-button">
+                  <i class="bi bi-file-earmark-pdf"></i>
+                  PDF
+                </a>
+
+                <span *ngIf="!compra.ticket?.pdfUrl">
+                  No disponible
+                </span>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
     </div>
 
-    <div class="content-card" *ngIf="pestanaActiva === 'reclamos'">
+    <div
+      class="content-card"
+      *ngIf="pestanaActiva === 'reclamos'">
+
       <h5>Mis Reclamos</h5>
       <hr>
 
-      <form [formGroup]="formReclamo" (ngSubmit)="crearReclamo()">
+      <form
+        [formGroup]="formReclamo"
+        (ngSubmit)="crearReclamo()">
+
         <div class="mb-3">
           <label class="form-label">Asunto</label>
-          <input class="form-control" formControlName="asunto">
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="asunto">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Descripción</label>
-          <textarea class="form-control" rows="4" formControlName="descripcion"></textarea>
+
+          <textarea
+            class="form-control"
+            rows="4"
+            formControlName="descripcion">
+          </textarea>
         </div>
 
-        <button class="btn btn-success" type="submit">
+        <button
+          class="btn btn-success claim-button"
+          type="submit">
+          <i class="bi bi-send me-1"></i>
           Enviar Reclamo
         </button>
+
       </form>
 
-      <div class="reclamo-item" *ngFor="let reclamo of reclamos">
-        <div class="d-flex justify-content-between">
+      <div
+        class="reclamo-item"
+        *ngFor="let reclamo of reclamos">
+
+        <div class="reclamo-header">
+
           <strong>{{ reclamo.asunto }}</strong>
-          <span class="badge bg-warning text-dark" *ngIf="reclamo.estado === 'pendiente'">Pendiente</span>
-          <span class="badge bg-success" *ngIf="reclamo.estado === 'resuelto'">Resuelto</span>
-          <span class="badge bg-info" *ngIf="reclamo.estado === 'en_proceso'">En proceso</span>
+
+          <span
+            class="badge bg-warning text-dark"
+            *ngIf="reclamo.estado === 'pendiente'">
+            Pendiente
+          </span>
+
+          <span
+            class="badge bg-success"
+            *ngIf="reclamo.estado === 'resuelto'">
+            Resuelto
+          </span>
+
+          <span
+            class="badge bg-info text-dark"
+            *ngIf="reclamo.estado === 'en_proceso'">
+            En proceso
+          </span>
+
         </div>
 
         <p>{{ reclamo.descripcion }}</p>
+
       </div>
+
     </div>
+
   </div>
+
 </div>

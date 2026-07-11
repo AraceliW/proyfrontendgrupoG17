@@ -1,69 +1,128 @@
-<header class="hero-section">
-    <div class="container position-relative">
-        <p class="text-green nav-link-look fw-bold mb-2 small">VIVE EL DEPORTE DE PRIMERA MANO</p>
-        <h1 class="display-3 fw-black mb-3" style="font-weight: 900; letter-spacing: -1px;">DIBUTICK</h1>
-        <p class="fs-5 mb-4 text-light">Consigue tus entradas para los mejores partidos en tu ciudad.</p>
+<header class="hero-section d-flex align-items-center">
+    <div class="container position-relative hero-content">
+        <p class="text-green nav-link-look fw-bold mb-2 hero-subtitle">
+            VIVE EL DEPORTE DE PRIMERA MANO
+        </p>
+
+        <h1 class="hero-title fw-black mb-3">
+            DIBUTICK
+        </h1>
+
+        <p class="hero-description mb-0 text-light">
+            Consigue tus entradas para los mejores partidos en tu ciudad.
+        </p>
     </div>
 </header>
 
-<main class="container my-5 pt-3">
-    <div class="d-flex justify-content-between align-items-end mb-4">
-        <h3 class="fw-black mb-0" style="color: var(--blue-dark); font-weight: 900;">PRÓXIMOS PARTIDOS</h3>
+<main class="container my-4 my-md-5 pt-2 pt-md-3">
+
+    <div
+        class="d-flex flex-column flex-sm-row justify-content-between
+               align-items-start align-items-sm-end gap-2 mb-4"
+    >
+        <h3 class="section-title fw-black mb-0">
+            PRÓXIMOS PARTIDOS
+        </h3>
     </div>
 
-    <div id="eventos" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div
+        id="eventos"
+        class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 g-md-4"
+    >
 
         <div class="col" *ngFor="let evento of eventos">
             <div class="card match-card h-100">
-            <div class="match-header">
-                <span class="text-green-secondary fw-bold">{{ evento.categoriaDeporte }}</span>
-                <span>{{ evento.fecha }} - {{ evento.hora }}</span>
-            </div>
 
-            <div class="card-body px-4 py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4 text-center">
-                <div class="w-25">
-                    <i class="bi bi-shield-shaded fs-1 text-primary"></i>
-                    <div class="team-name mt-2 fw-bold">
-                    {{ obtenerEquipo1(evento.nombre) }}
-                    </div>
+                <div class="match-header">
+                    <span class="text-green-secondary fw-bold sport-category">
+                        {{ evento.categoriaDeporte }}
+                    </span>
+
+                    <span class="match-date">
+                        {{ evento.fecha }} - {{ evento.hora }}
+                    </span>
                 </div>
 
-                <div class="vs-text fw-bold text-muted">VS</div>
+                <div class="card-body px-3 px-sm-4 py-4 d-flex flex-column">
 
-                <div class="w-25">
-                    <i class="bi bi-shield-fill fs-1 text-danger"></i>
-                    <div class="team-name mt-2 fw-bold">
-                    {{ obtenerEquipo2(evento.nombre) }}
+                    <div class="teams-container mb-4">
+
+                        <div class="team-container">
+                            <i class="bi bi-shield-shaded team-icon text-primary"></i>
+
+                            <div class="team-name mt-2 fw-bold">
+                                {{ obtenerEquipo1(evento.nombre) }}
+                            </div>
+                        </div>
+
+                        <div class="vs-text fw-bold text-muted">
+                            VS
+                        </div>
+
+                        <div class="team-container">
+                            <i class="bi bi-shield-fill team-icon text-danger"></i>
+
+                            <div class="team-name mt-2 fw-bold">
+                                {{ obtenerEquipo2(evento.nombre) }}
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-               </div>
-                    <p class="text-center text-muted small mb-3" *ngIf="evento.descripcion">
+
+                    <p
+                        class="text-center text-muted small mb-3 event-description"
+                        *ngIf="evento.descripcion"
+                    >
                         {{ evento.descripcion }}
                     </p>
-                    <p class="text-muted small mb-3">
-                        <i class="bi bi-geo-alt"></i>
-                        {{ evento.estadio }} - {{ evento.ciudad }}
-                    </p>
-                <div class="d-flex justify-content-between align-items-center mt-auto">
-                <div>
-                    <small class="text-muted d-block" style="font-size: 11px;">
-                    {{ obtenerTipoEntrada(evento) }}
-                    </small>
-                    <strong class="text-green fs-5">
-                        ${{ evento.precioDesde }}
-                    </strong>
-                </div>
 
-                <a [routerLink]="['/Entrada', evento.id]"
-                    class="btn btn-dark fw-bold"
-                    style="background-color: var(--blue-dark);">
-                    Ver Entradas
-                </a>
+                    <p class="text-muted small mb-3 event-location">
+                        <i class="bi bi-geo-alt-fill me-1"></i>
+                        <span>
+                            {{ evento.estadio }} - {{ evento.ciudad }}
+                        </span>
+                    </p>
+
+                    <div
+                        class="event-footer d-flex flex-column flex-sm-row
+                               justify-content-between align-items-stretch
+                               align-items-sm-center gap-3 mt-auto"
+                    >
+
+                        <div class="price-container">
+                            <small class="text-muted d-block ticket-type">
+                                {{ obtenerTipoEntrada(evento) }}
+                            </small>
+
+                            <strong class="text-green event-price">
+                                ${{ evento.precioDesde }}
+                            </strong>
+                        </div>
+
+                        <a
+                            [routerLink]="['/Entrada', evento.id]"
+                            class="btn btn-dark fw-bold ticket-button"
+                        >
+                            Ver Entradas
+                        </a>
+
+                    </div>
+
                 </div>
-            </div>
             </div>
         </div>
 
     </div>
+
+    <div
+        *ngIf="eventos.length === 0"
+        class="text-center py-5 empty-events"
+    >
+        <i class="bi bi-calendar-x display-4 text-muted"></i>
+
+        <p class="text-muted mt-3 mb-0">
+            No hay próximos partidos disponibles.
+        </p>
+    </div>
+
 </main>

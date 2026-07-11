@@ -1,106 +1,247 @@
-<div *ngIf="dashboard">
+<div
+  class="dashboard-page container-fluid px-2 px-sm-3 px-lg-4 py-3"
+  *ngIf="dashboard">
 
-  <div class="card p-3 mb-4">
+  <div class="filter-card card p-3 p-md-4 mb-4">
+
     <div class="row g-3 align-items-end">
-      <div class="col-md-4">
-        <label class="form-label fw-bold">Mes</label>
-        <select class="form-select" [(ngModel)]="mesSeleccionado">
-          <option *ngFor="let mes of meses" [value]="mes.valor">
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <label class="form-label fw-bold">
+          Mes
+        </label>
+
+        <select
+          class="form-select"
+          [(ngModel)]="mesSeleccionado">
+
+          <option
+            *ngFor="let mes of meses"
+            [value]="mes.valor">
             {{ mes.nombre }}
           </option>
+
         </select>
       </div>
 
-      <div class="col-md-4">
-        <label class="form-label fw-bold">Año</label>
-        <input type="number" class="form-control" [(ngModel)]="anioSeleccionado">
+      <div class="col-12 col-sm-6 col-lg-4">
+        <label class="form-label fw-bold">
+          Año
+        </label>
+
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="anioSeleccionado">
       </div>
 
-      <div class="col-md-4">
-        <button class="btn btn-success w-100" (click)="cargarDashboard()">
+      <div class="col-12 col-lg-4">
+
+        <button
+          type="button"
+          class="btn btn-success dashboard-filter-button w-100"
+          (click)="cargarDashboard()">
+
+          <i class="bi bi-funnel me-1"></i>
           Filtrar Dashboard
+
         </button>
+
       </div>
+
     </div>
+
   </div>
 
-  <div class="row g-4 mb-4">
-    <div class="col-12 col-md-6 col-xl-3">
+  <div class="row g-3 g-md-4 mb-4">
+
+    <div class="col-12 col-sm-6 col-xl-3">
+
       <div class="stat-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="icon-box bg-icon-green"><i class="bi bi-ticket-detailed"></i></div>
-          <span class="badge-trend">+12.4%</span>
+
+        <div class="stat-card-header">
+
+          <div class="icon-box bg-icon-green">
+            <i class="bi bi-ticket-detailed"></i>
+          </div>
+
+          <span class="badge-trend">
+            +12.4%
+          </span>
+
         </div>
-        <h3 class="stat-value">{{ dashboard.tarjetas.entradasVendidas }}</h3>
-        <p class="stat-label">Entradas Vendidas</p>
+
+        <h3 class="stat-value">
+          {{ dashboard.tarjetas.entradasVendidas }}
+        </h3>
+
+        <p class="stat-label">
+          Entradas Vendidas
+        </p>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-6 col-xl-3">
+    <div class="col-12 col-sm-6 col-xl-3">
+
       <div class="stat-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="icon-box bg-icon-blue"><i class="bi bi-graph-up-arrow"></i></div>
-          <span class="badge-trend">+8.1%</span>
+
+        <div class="stat-card-header">
+
+          <div class="icon-box bg-icon-blue">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+
+          <span class="badge-trend">
+            +8.1%
+          </span>
+
         </div>
-        <h3 class="stat-value">{{ dashboard.tarjetas.recaudacionTotal | currency:'USD':'symbol':'1.0-0' }}</h3>
-        <p class="stat-label">Recaudación Total</p>
+
+        <h3 class="stat-value">
+          {{ dashboard.tarjetas.recaudacionTotal | currency:'USD':'symbol':'1.0-0' }}
+        </h3>
+
+        <p class="stat-label">
+          Recaudación Total
+        </p>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-6 col-xl-3">
+    <div class="col-12 col-sm-6 col-xl-3">
+
       <div class="stat-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="icon-box bg-icon-orange"><i class="bi bi-people"></i></div>
-          <span class="badge-trend">+5.7%</span>
+
+        <div class="stat-card-header">
+
+          <div class="icon-box bg-icon-orange">
+            <i class="bi bi-people"></i>
+          </div>
+
+          <span class="badge-trend">
+            +5.7%
+          </span>
+
         </div>
-        <h3 class="stat-value">{{ dashboard.tarjetas.compradoresUnicos }}</h3>
-        <p class="stat-label">Compradores Únicos</p>
+
+        <h3 class="stat-value">
+          {{ dashboard.tarjetas.compradoresUnicos }}
+        </h3>
+
+        <p class="stat-label">
+          Compradores Únicos
+        </p>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-md-6 col-xl-3">
+    <div class="col-12 col-sm-6 col-xl-3">
+
       <div class="stat-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="icon-box bg-icon-purple"><i class="bi bi-star"></i></div>
-          <span class="badge-trend">+3.2%</span>
+
+        <div class="stat-card-header">
+
+          <div class="icon-box bg-icon-purple">
+            <i class="bi bi-star"></i>
+          </div>
+
+          <span class="badge-trend">
+            +3.2%
+          </span>
+
         </div>
-        <h3 class="stat-value">{{ dashboard.tarjetas.promedioPorEntrada | currency:'USD':'symbol':'1.2-2' }}</h3>
-        <p class="stat-label">Promedio por Entrada</p>
+
+        <h3 class="stat-value">
+          {{ dashboard.tarjetas.promedioPorEntrada | currency:'USD':'symbol':'1.2-2' }}
+        </h3>
+
+        <p class="stat-label">
+          Promedio por Entrada
+        </p>
+
       </div>
+
     </div>
+
   </div>
 
-  <div class="row g-4 mb-4">
-    <div class="col-12 col-lg-8">
+  <div class="row g-3 g-md-4 mb-4">
+
+    <div class="col-12 col-xl-8">
+
       <div class="chart-card">
-        <h5 class="chart-title">Ventas por Partido</h5>
-        <p class="chart-subtitle">Entradas vendidas por encuentro</p>
-        <div style="height: 300px; width: 100%;">
+
+        <div class="chart-heading">
+          <h5 class="chart-title">
+            Ventas por Partido
+          </h5>
+
+          <p class="chart-subtitle">
+            Entradas vendidas por encuentro
+          </p>
+        </div>
+
+        <div class="chart-container chart-container-bar">
           <canvas id="barChart"></canvas>
         </div>
+
       </div>
+
     </div>
 
-    <div class="col-12 col-lg-4">
-      <div class="chart-card">
-        <h5 class="chart-title">Por Categoría</h5>
-        <p class="chart-subtitle">% del total vendido</p>
+    <div class="col-12 col-xl-4">
 
-        <div style="height: 200px; width: 100%;">
+      <div class="chart-card">
+
+        <div class="chart-heading">
+          <h5 class="chart-title">
+            Por Categoría
+          </h5>
+
+          <p class="chart-subtitle">
+            % del total vendido
+          </p>
+        </div>
+
+        <div class="chart-container chart-container-donut">
           <canvas id="donutChart"></canvas>
         </div>
 
         <div class="custom-legend mt-4">
-          <div class="legend-item" *ngFor="let item of dashboard.graficos.ventasPorCategoria">
+
+          <div
+            class="legend-item"
+            *ngFor="let item of dashboard.graficos.ventasPorCategoria">
+
             <div class="legend-label">
-              <span class="legend-dot" [style.background]="obtenerColor(item.categoria)"></span>
-              {{ item.categoria }}
+
+              <span
+                class="legend-dot"
+                [style.background]="obtenerColor(item.categoria)">
+              </span>
+
+              <span>
+                {{ item.categoria }}
+              </span>
+
             </div>
-            <div class="legend-value">{{ item.porcentaje }}%</div>
+
+            <div class="legend-value">
+              {{ item.porcentaje }}%
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
 
 </div>
