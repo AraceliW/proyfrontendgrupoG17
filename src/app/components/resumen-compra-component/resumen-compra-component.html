@@ -1,60 +1,131 @@
-<main class="container my-5" *ngIf="compra">
+<main
+  class="purchase-summary-page container-fluid container-lg my-3 my-md-5 px-2 px-sm-3"
+  *ngIf="compra">
+
   <div class="row justify-content-center">
-    <div class="col-md-7">
-      <div class="card shadow border-0 rounded-4">
-        <div class="card-body p-4">
 
-          <h3 class="fw-bold mb-4 text-center">Resumen de Compra</h3>
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
 
-          <p><strong>Código:</strong> {{ compra.codigoCompra }}</p>
-          <p><strong>Estado:</strong> {{ compra.estado }}</p>
+      <div class="card purchase-card shadow-sm border-0 rounded-4">
 
-          <hr>
+        <div class="card-body p-3 p-sm-4 p-md-5">
 
-          <div *ngFor="let detalle of compra.detalles">
-            <h5 class="fw-bold">
-              {{ detalle.tipoEntrada?.evento?.nombre }}
-            </h5>
+          <h3 class="purchase-title fw-bold mb-4 text-center">
+            Resumen de Compra
+          </h3>
 
-            <p class="text-muted">
-              {{ detalle.tipoEntrada?.nombre }}
-            </p>
+          <div class="purchase-meta">
 
-            <div class="d-flex justify-content-between">
-              <span>Cantidad</span>
-              <strong>{{ detalle.cantidad }}</strong>
+            <div class="meta-row">
+              <span>Código</span>
+              <strong>{{ compra.codigoCompra }}</strong>
             </div>
 
-            <div class="d-flex justify-content-between">
-              <span>Precio unitario</span>
-              <strong>${{ detalle.precioUnitario }}</strong>
+            <div class="meta-row">
+              <span>Estado</span>
+
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'status-confirmed': compra.estado === 'confirmada',
+                  'status-pending': compra.estado === 'pendiente',
+                  'status-expired': compra.estado === 'expirada'
+                }">
+                {{ compra.estado }}
+              </span>
             </div>
 
-            <div class="d-flex justify-content-between">
-              <span>Subtotal</span>
-              <strong>${{ detalle.subtotal }}</strong>
-            </div>
           </div>
 
-          <hr>
+          <hr class="my-4">
 
-          <div class="d-flex justify-content-between fs-4 fw-bold">
+          <div
+            class="purchase-detail"
+            *ngFor="let detalle of compra.detalles; let ultimo = last">
+
+            <div class="detail-header">
+
+              <div>
+                <h5 class="fw-bold mb-1">
+                  {{ detalle.tipoEntrada?.evento?.nombre }}
+                </h5>
+
+                <p class="text-muted mb-0">
+                  {{ detalle.tipoEntrada?.nombre }}
+                </p>
+              </div>
+
+              <i class="bi bi-ticket-perforated detail-icon"></i>
+
+            </div>
+
+            <div class="detail-values mt-4">
+
+              <div class="summary-row">
+                <span>Cantidad</span>
+                <strong>{{ detalle.cantidad }}</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Precio unitario</span>
+                <strong>${{ detalle.precioUnitario }}</strong>
+              </div>
+
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong>${{ detalle.subtotal }}</strong>
+              </div>
+
+            </div>
+
+            <hr
+              class="my-4"
+              *ngIf="!ultimo">
+
+          </div>
+
+          <hr class="my-4">
+
+          <div class="total-row">
+
             <span>Total</span>
-            <span class="text-success">${{ compra.total }}</span>
+
+            <span class="total-amount">
+              ${{ compra.total }}
+            </span>
+
           </div>
 
-          <div class="alert alert-warning text-center mt-4">
-            Reserva válida por:
-            <strong>{{ tiempoRestante }}</strong>
+          <div class="alert alert-warning reservation-alert mt-4 mb-4">
+
+            <i class="bi bi-clock-history"></i>
+
+            <div>
+              <span>Reserva válida por</span>
+              <strong>{{ tiempoRestante }}</strong>
+            </div>
+
           </div>
 
-          <button class="btn btn-green w-100 py-3 fw-bold"
-                  (click)="confirmarPago()">
-            Confirmar y pagar con Mercado Pago
+          <button
+            type="button"
+            class="btn btn-green payment-button w-100 fw-bold"
+            (click)="confirmarPago()">
+
+            <i class="bi bi-wallet2"></i>
+
+            <span>
+              Confirmar y pagar con Mercado Pago
+            </span>
+
           </button>
 
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </main>

@@ -1,31 +1,46 @@
-<div class="container-fluid py-4">
-    <div class="card shadow-sm">
-        <div class="card-header bg-dark text-white">
-            <h4 class="mb-0">
+```html
+<div class="container-fluid gestion-eventos py-3 py-md-4 px-2 px-sm-3 px-lg-4">
+
+    <!-- FORMULARIO -->
+    <div class="card form-card shadow-sm">
+
+        <div class="card-header form-card-header">
+            <h4 class="mb-0 d-flex align-items-center gap-2">
                 <i class="bi bi-calendar-event"></i>
-                Gestión de Eventos
+                <span>Gestión de Eventos</span>
             </h4>
         </div>
-        <div class="card-body">
+
+        <div class="card-body form-card-body">
+
             <form
                 [formGroup]="formulario"
-                (ngSubmit)="guardarEvento()">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
+                (ngSubmit)="guardarEvento()"
+            >
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6">
                         <label class="form-label">
                             Nombre del Evento
                         </label>
+
                         <input
+                            type="text"
                             class="form-control"
-                            formControlName="nombre">
+                            formControlName="nombre"
+                        >
                     </div>
-                    <div class="col-md-6 mb-3">
+
+                    <div class="col-12 col-md-6">
                         <label class="form-label">
                             Categoría
                         </label>
+
                         <select
                             class="form-select"
-                            formControlName="categoriaDeporte">
+                            formControlName="categoriaDeporte"
+                        >
                             <option value="">Seleccione...</option>
                             <option>Fútbol</option>
                             <option>Basquet</option>
@@ -33,316 +48,479 @@
                             <option>Voley</option>
                         </select>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">
-                        Descripción
-                    </label>
-                    <textarea
-                        rows="3"
-                        class="form-control"
-                        formControlName="descripcion">
-                    </textarea>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label>Fecha</label>
+
+                    <div class="col-12">
+                        <label class="form-label">
+                            Descripción
+                        </label>
+
+                        <textarea
+                            rows="3"
+                            class="form-control"
+                            formControlName="descripcion"
+                        ></textarea>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <label class="form-label">
+                            Fecha
+                        </label>
+
                         <input
                             type="date"
                             class="form-control"
-                            formControlName="fecha">
+                            formControlName="fecha"
+                        >
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Hora</label>
+
+                    <div class="col-12 col-sm-6">
+                        <label class="form-label">
+                            Hora
+                        </label>
+
                         <input
                             type="time"
                             class="form-control"
-                            formControlName="hora">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label>Estadio</label>
-                        <input
-                            class="form-control"
-                            formControlName="estadio">
+                            formControlName="hora"
+                        >
                     </div>
 
-                    <div class="col-md-4 mb-3">
-                        <label>Ciudad</label>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label class="form-label">
+                            Estadio
+                        </label>
+
                         <input
+                            type="text"
                             class="form-control"
-                            formControlName="ciudad">
+                            formControlName="estadio"
+                        >
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Dirección</label>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <label class="form-label">
+                            Ciudad
+                        </label>
+
                         <input
+                            type="text"
                             class="form-control"
-                            formControlName="direccion">
+                            formControlName="ciudad"
+                        >
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label>Video Youtube</label>
-                    <input
-                        class="form-control"
-                        placeholder="Ej: 6tLxv5EsszA"
-                        formControlName="youtubeVideoId">
-                </div>
-                <div class="mb-4">
-                    <label>Banner</label>
-                    <input
-                        type="file"
-                        class="form-control"
-                        (change)="seleccionarBanner($event)">
-                </div>
-                <hr>
-                    <h5 class="mb-4">
-                        Tipos de Entrada
-                    </h5>
-                    <div class="table-responsive">
-                        <table class="table table-bordered align-middle">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Precio</th>
-                                    <th>Stock</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>General</td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="generalPrecio">
-                                    </td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="generalStock">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Popular</td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="popularPrecio">
-                                    </td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="popularStock">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Platea</td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="plateaPrecio">
-                                    </td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="plateaStock">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>VIP</td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="vipPrecio">
-                                    </td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="vipStock">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Palco</td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="palcoPrecio">
-                                    </td>
-                                    <td>
-                                        <input
-                                        type="number"
-                                        class="form-control"
-                                        formControlName="palcoStock">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <div class="col-12 col-lg-4">
+                        <label class="form-label">
+                            Dirección
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            formControlName="direccion"
+                        >
                     </div>
-                    <div class="d-flex justify-content-end gap-3 mt-4">
-                        <button
+
+                    <div class="col-12">
+                        <label class="form-label">
+                            Video de YouTube
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Ej: 6tLxv5EsszA"
+                            formControlName="youtubeVideoId"
+                        >
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">
+                            Banner
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            accept="image/*"
+                            (change)="seleccionarBanner($event)"
+                        >
+                    </div>
+
+                </div>
+
+                <hr class="my-4">
+
+                <h5 class="mb-3 mb-md-4">
+                    Tipos de Entrada
+                </h5>
+
+                <div class="table-responsive ticket-table-container">
+
+                    <table class="table table-bordered align-middle ticket-table">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td data-label="Tipo">
+                                    General
+                                </td>
+
+                                <td data-label="Precio">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="generalPrecio"
+                                    >
+                                </td>
+
+                                <td data-label="Stock">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="generalStock"
+                                    >
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Tipo">
+                                    Popular
+                                </td>
+
+                                <td data-label="Precio">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="popularPrecio"
+                                    >
+                                </td>
+
+                                <td data-label="Stock">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="popularStock"
+                                    >
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Tipo">
+                                    Platea
+                                </td>
+
+                                <td data-label="Precio">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="plateaPrecio"
+                                    >
+                                </td>
+
+                                <td data-label="Stock">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="plateaStock"
+                                    >
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Tipo">
+                                    VIP
+                                </td>
+
+                                <td data-label="Precio">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="vipPrecio"
+                                    >
+                                </td>
+
+                                <td data-label="Stock">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="vipStock"
+                                    >
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Tipo">
+                                    Palco
+                                </td>
+
+                                <td data-label="Precio">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="palcoPrecio"
+                                    >
+                                </td>
+
+                                <td data-label="Stock">
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        class="form-control"
+                                        formControlName="palcoStock"
+                                    >
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div
+                    class="form-actions d-flex flex-column flex-sm-row
+                           justify-content-end gap-2 gap-sm-3 mt-4"
+                >
+
+                    <button
                         type="button"
-                        class="btn btn-secondary"
-                        (click)="limpiarFormulario()">
+                        class="btn btn-secondary btn-form"
+                        (click)="limpiarFormulario()"
+                    >
+                        <i class="bi bi-eraser me-1"></i>
                         Limpiar
-                        </button>
-                        <button
+                    </button>
+
+                    <button
                         *ngIf="!editando"
                         type="submit"
-                        class="btn btn-success">
+                        class="btn btn-success btn-form"
+                    >
+                        <i class="bi bi-check-circle me-1"></i>
                         Guardar Evento
-                        </button>
-                        <button
+                    </button>
+
+                    <button
                         *ngIf="editando"
                         type="submit"
-                        class="btn btn-warning">
+                        class="btn btn-warning btn-form"
+                    >
+                        <i class="bi bi-pencil-square me-1"></i>
                         Actualizar Evento
-                        </button>
-                        <button
+                    </button>
+
+                    <button
                         *ngIf="editando"
                         type="button"
-                        class="btn btn-danger"
-                        (click)="cancelarEdicion()">
+                        class="btn btn-danger btn-form"
+                        (click)="cancelarEdicion()"
+                    >
+                        <i class="bi bi-x-circle me-1"></i>
                         Cancelar
-                        </button>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <hr class="my-4 my-md-5">
+
+    <!-- EVENTOS REGISTRADOS -->
+    <div class="card events-card shadow-sm">
+
+        <div class="card-header events-card-header py-3">
+
+            <div class="row align-items-center g-3">
+
+                <div class="col-12 col-md-5">
+                    <h5 class="mb-0">
+                        Eventos Registrados
+                    </h5>
+                </div>
+
+                <div class="col-12 col-md-7 col-lg-5 ms-lg-auto">
+
+                    <div class="input-group search-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+
+                        <input
+                            type="search"
+                            class="form-control"
+                            placeholder="Buscar evento..."
+                            [(ngModel)]="textoBusqueda"
+                            (keyup)="buscar()"
+                            name="buscar"
+                        >
                     </div>
-                </form>
+
+                </div>
+
             </div>
+
         </div>
-<hr class="my-5">
-<div class="card shadow-sm">
-    <div class="card-header bg-light">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h5 class="mb-0">
-                    Eventos Registrados
-                </h5>
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive events-table-container">
+
+                <table class="table table-hover align-middle mb-0 events-table">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Banner</th>
+                            <th>Evento</th>
+                            <th>Fecha</th>
+                            <th>Ciudad</th>
+                            <th>Estadio</th>
+                            <th>Estado</th>
+                            <th class="text-center">
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let evento of eventosFiltrados">
+
+                            <td data-label="Banner" class="banner-cell">
+
+                                <img
+                                    *ngIf="evento.imagenBanner"
+                                    [src]="'https://proybackendgrupog17.onrender.com' + evento.imagenBanner"
+                                    [alt]="'Banner de ' + evento.nombre"
+                                    class="event-banner img-thumbnail"
+                                >
+
+                                <div
+                                    *ngIf="!evento.imagenBanner"
+                                    class="no-banner"
+                                >
+                                    <i class="bi bi-image"></i>
+                                </div>
+
+                            </td>
+
+                            <td data-label="Evento">
+
+                                <strong class="event-name">
+                                    {{ evento.nombre }}
+                                </strong>
+
+                                <small class="text-muted d-block mt-1">
+                                    {{ evento.categoriaDeporte }}
+                                </small>
+
+                            </td>
+
+                            <td data-label="Fecha">
+                                <span>
+                                    {{ evento.fecha | date:'dd/MM/yyyy' }}
+                                </span>
+
+                                <small class="text-muted d-block">
+                                    {{ evento.hora }}
+                                </small>
+                            </td>
+
+                            <td data-label="Ciudad">
+                                {{ evento.ciudad }}
+                            </td>
+
+                            <td data-label="Estadio">
+                                {{ evento.estadio }}
+                            </td>
+
+                            <td data-label="Estado">
+
+                                <span
+                                    class="badge"
+                                    [ngClass]="evento.estado === 'activo'
+                                        ? 'bg-success'
+                                        : 'bg-danger'"
+                                >
+                                    {{ evento.estado }}
+                                </span>
+
+                            </td>
+
+                            <td data-label="Acciones" class="actions-cell">
+
+                                <div
+                                    class="d-flex justify-content-center
+                                           justify-content-sm-end
+                                           justify-content-lg-center gap-2"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-warning btn-sm action-button"
+                                        title="Editar evento"
+                                        (click)="editarEvento(evento)"
+                                    >
+                                        <i class="bi bi-pencil"></i>
+                                        <span class="d-inline d-lg-none ms-1">
+                                            Editar
+                                        </span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger btn-sm action-button"
+                                        title="Eliminar evento"
+                                        (click)="eliminarEvento(evento.id!)"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                        <span class="d-inline d-lg-none ms-1">
+                                            Eliminar
+                                        </span>
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        <tr *ngIf="eventosFiltrados.length === 0">
+                            <td colspan="7" class="text-center py-5">
+                                <i class="bi bi-calendar-x fs-1 text-muted"></i>
+
+                                <p class="text-muted mt-2 mb-0">
+                                    No hay eventos registrados
+                                </p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
             </div>
-            <div class="col-md-6">
-                <input
-                    class="form-control"
-                    placeholder="Buscar evento..."
-                    [(ngModel)]="textoBusqueda"
-                    (keyup)="buscar()"
-                    name="buscar">
-            </div>
+
         </div>
     </div>
-    <div class="card-body p-0">
 
-        <div class="table-responsive">
-
-            <table class="table table-hover align-middle mb-0">
-
-                <thead class="table-dark">
-
-                    <tr>
-
-                        <th>Banner</th>
-
-                        <th>Evento</th>
-
-                        <th>Fecha</th>
-
-                        <th>Ciudad</th>
-
-                        <th>Estadio</th>
-
-                        <th>Estado</th>
-
-                        <th class="text-center">
-
-                            Acciones
-
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr *ngFor="let evento of eventosFiltrados">
-
-                        <td width="120">
-
-                            <img
-
-                                *ngIf="evento.imagenBanner"
-
-                                [src]="'https://proybackendgrupog17.onrender.com'+evento.imagenBanner"
-
-                                class="img-thumbnail"
-
-                                style="height:70px;width:110px;object-fit:cover;">
-
-                        </td>
-
-                        <td>
-
-                            <strong>
-
-                                {{evento.nombre}}
-
-                            </strong>
-
-                            <br>
-
-                            <small class="text-muted">
-
-                                {{evento.categoriaDeporte}}
-
-                            </small>
-
-                        </td>
-                        <td>
-                            {{evento.fecha | date:'dd/MM/yyyy'}}
-                            <br>
-                            {{evento.hora}}
-                        </td>
-                        <td>
-                            {{evento.ciudad}}
-                        </td>
-                        <td>
-                            {{evento.estadio}}
-                        </td>
-                        <td>
-                            <span
-                                class="badge"
-                                [ngClass]="evento.estado=='activo'
-                                ? 'bg-success'
-                                : 'bg-danger'">
-                                {{evento.estado}}
-                            </span>
-                        </td>
-                        <td class="text-center">
-                            <button
-                                class="btn btn-warning btn-sm me-2"
-                                (click)="editarEvento(evento)">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                            <button
-                                class="btn btn-danger btn-sm"
-                                (click)="eliminarEvento(evento.id!)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr *ngIf="eventosFiltrados.length==0">
-                        <td colspan="7" class="text-center py-5">
-                            No hay eventos registrados
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div>

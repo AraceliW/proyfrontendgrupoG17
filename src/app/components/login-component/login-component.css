@@ -1,10 +1,14 @@
 .main-wrapper {
-    flex-grow: 1;
+    min-height: calc(100vh - 72px);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 520px;
 }
 
 .login-header {
@@ -13,12 +17,14 @@
 }
 
 .login-header .trophy-icon {
+    display: inline-block;
     font-size: 2.5rem;
     color: #fbbf24;
     margin-bottom: 10px;
 }
 
 .login-header h2 {
+    font-size: clamp(1.7rem, 5vw, 2rem);
     font-weight: 800;
     color: var(--blue-dark);
     margin-bottom: 5px;
@@ -28,16 +34,16 @@
 .login-header p {
     color: var(--text-muted);
     font-size: 0.95rem;
+    margin-bottom: 0;
 }
 
 .login-card {
-    background: white;
     width: 100%;
-    max-width: 440px;
+    background-color: white;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    overflow: hidden;
     border: 1px solid var(--card-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .login-tabs {
@@ -48,44 +54,63 @@
 
 .login-tab {
     flex: 1;
-    text-align: center;
-    padding: 18px 10px;
+    min-height: 56px;
+    padding: 15px 10px;
+    border: none;
+    background-color: white;
+    color: var(--text-muted);
     font-weight: 700;
     font-size: 0.85rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.2s;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .login-tab.active {
     background-color: var(--blue-dark);
     color: white;
-    border-bottom: none;
 }
 
 .login-tab:not(.active):hover {
     background-color: #f8fafc;
+    color: var(--blue-dark);
+}
+
+.login-tab:focus-visible {
+    outline: 3px solid rgba(46, 125, 50, 0.25);
+    outline-offset: -3px;
 }
 
 .login-body {
     padding: 32px;
 }
 
+.google-button-container {
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+}
+
+.google-button-container > div {
+    max-width: 100%;
+}
+
 .btn-google {
     width: 100%;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     background-color: white;
     border: 1px solid #cbd5e1;
-    padding: 10px;
+    padding: 10px 14px;
     border-radius: 8px;
     font-weight: 600;
     color: #334155;
-    transition: background 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .btn-google:hover {
@@ -95,6 +120,7 @@
 .btn-google svg {
     width: 20px;
     height: 20px;
+    flex-shrink: 0;
 }
 
 .divider {
@@ -108,16 +134,18 @@
 
 .divider::before,
 .divider::after {
-    content: '';
+    content: "";
     flex: 1;
     border-bottom: 1px solid #e2e8f0;
 }
 
 .divider span {
     padding: 0 15px;
+    white-space: nowrap;
 }
 
 .form-label {
+    display: block;
     font-weight: 600;
     color: #334155;
     font-size: 0.9rem;
@@ -125,6 +153,8 @@
 }
 
 .form-control {
+    width: 100%;
+    min-height: 44px;
     padding: 10px 14px;
     border-radius: 8px;
     border: 1px solid var(--card-border);
@@ -146,7 +176,8 @@
     font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.2s;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .forgot-link:hover {
@@ -156,18 +187,30 @@
 
 .btn-submit {
     width: 100%;
+    min-height: 46px;
     background-color: var(--blue-dark);
     color: white;
     border: none;
-    padding: 12px;
+    padding: 12px 18px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 1rem;
-    transition: background 0.2s;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .btn-submit:hover {
     background-color: #1e293b;
+}
+
+.btn-submit:active {
+    transform: scale(0.99);
+}
+
+.btn-submit:focus-visible {
+    outline: 3px solid rgba(46, 125, 50, 0.25);
+    outline-offset: 2px;
 }
 
 .terms-text {
@@ -176,6 +219,7 @@
     text-align: center;
     margin-top: 20px;
     margin-bottom: 0;
+    line-height: 1.6;
 }
 
 .terms-text a {
@@ -204,6 +248,104 @@
     text-decoration: underline;
 }
 
-.d-none {
-    display: none !important;
+.alert {
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 767.98px) {
+    .main-wrapper {
+        min-height: calc(100vh - 64px);
+        padding: 30px 16px;
+        align-items: flex-start;
+    }
+
+    .login-container {
+        max-width: 500px;
+    }
+
+    .login-header {
+        margin-bottom: 24px;
+    }
+
+    .login-body {
+        padding: 26px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .main-wrapper {
+        padding: 24px 12px;
+    }
+
+    .login-container {
+        max-width: 100%;
+    }
+
+    .login-header {
+        margin-bottom: 20px;
+    }
+
+    .login-header .trophy-icon {
+        font-size: 2.2rem;
+    }
+
+    .login-header p {
+        font-size: 0.9rem;
+    }
+
+    .login-card {
+        border-radius: 10px;
+    }
+
+    .login-tab {
+        min-height: 52px;
+        padding: 14px 6px;
+        font-size: 0.75rem;
+        letter-spacing: 0.2px;
+    }
+
+    .login-body {
+        padding: 20px;
+    }
+
+    .divider {
+        margin: 20px 0;
+    }
+
+    .divider span {
+        padding: 0 10px;
+    }
+
+    .form-control {
+        font-size: 16px;
+    }
+
+    .register-text {
+        margin-top: 18px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .main-wrapper {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .login-body {
+        padding: 16px;
+    }
+
+    .login-tab {
+        font-size: 0.68rem;
+    }
+
+    .divider span {
+        font-size: 0.78rem;
+    }
+
+    .terms-text {
+        font-size: 0.7rem;
+    }
 }

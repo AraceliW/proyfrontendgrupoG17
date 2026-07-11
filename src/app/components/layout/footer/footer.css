@@ -1,112 +1,280 @@
-.footer{
-    margin-top:80px;
-    background:#133C2E;
-    color:#cbd5e1;
-    padding:60px 0 30px;
+.footer {
+    margin-top: 80px;
+    background-color: #133c2e;
+    color: #cbd5e1;
+    padding: 60px 0 30px;
 }
 
-.footer hr{
-    border-color:rgba(255,255,255,.12);
-    margin:40px 0;
+.footer hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 40px 0;
+    opacity: 1;
+}
+.footer-top {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.footer-top h3{
-    color:white;
-    font-weight:800;
-    letter-spacing:.5px;
-    margin-top:15px;
+.logo-icon {
+    display: inline-block;
+    color: #fbbf24;
+    font-size: clamp(2.5rem, 6vw, 3.2rem);
+    margin-right: 0 !important;
 }
 
-.footer-top h3 span{
-    color:#2ecc71;
+.footer-top h3 {
+    color: white;
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+    margin-bottom: 0;
 }
 
-.logo-icon{
-    font-size:3rem;
-    color:#fbbf24;
+.footer-top h3 span {
+    color: #2ecc71;
 }
 
-.footer-top p{
-    max-width:650px;
-    margin:20px auto;
-    font-size:1rem;
+.footer-top p {
+    max-width: 650px;
+    margin: 20px auto;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.7;
 }
 
-.footer h5{
-    color:white;
-    font-weight:700;
-    margin-bottom:20px;
+.footer-main-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 11px 24px;
+    border-radius: 9px;
+    font-weight: 600;
 }
 
-.footer ul{
-    list-style:none;
-    padding:0;
-    margin:0;
+.footer-main-button i {
+    margin-right: 0;
+}
+.footer-column {
+    height: 100%;
 }
 
-.footer li{
-    margin-bottom:12px;
+.footer h5 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
 }
 
-.footer a{
-    color:#cbd5e1;
-    text-decoration:none;
-    transition:.25s;
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.footer a:hover{
-    color:#2ecc71;
-    padding-left:5px;
+.footer li {
+    margin-bottom: 13px;
+    line-height: 1.5;
 }
 
-.footer i{
-    margin-right:8px;
+.footer li:last-child {
+    margin-bottom: 0;
 }
 
-.social-icons{
-    display:flex;
-    gap:18px;
-    margin-top:10px;
+.footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
-.social-icons a{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:rgba(255,255,255,.08);
-    color:white;
-    font-size:1.2rem;
-    transition:.25s;
+.footer ul li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.social-icons a:hover{
-    background:#2ecc71;
-    transform:translateY(-3px);
-    padding-left:0;
+.footer ul li a i {
+    flex-shrink: 0;
+    margin-right: 0;
 }
 
-.footer-bottom{
-    text-align:center;
-    color:#94a3b8;
-    font-size:.9rem;
-    line-height:1.8;
+.footer a:hover {
+    color: #2ecc71;
 }
 
-@media(max-width:768px){
-
-.footer{
-    text-align:center;
+.footer ul li a:hover {
+    transform: translateX(5px);
+}
+.footer-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    overflow-wrap: anywhere;
 }
 
-.social-icons{
-    justify-content:center;
+.footer-info i {
+    flex-shrink: 0;
+    color: #2ecc71;
+    margin-top: 3px;
+    margin-right: 0;
+}
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
 }
 
-.footer ul{
-    margin-bottom:25px;
+.social-icons a {
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 1.2rem;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
+.social-icons a i {
+    margin-right: 0;
+}
+
+.social-icons a:hover {
+    color: white;
+    background-color: #2ecc71;
+    transform: translateY(-3px);
+}
+.footer-bottom {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.footer-bottom strong {
+    color: #cbd5e1;
+}
+@media (max-width: 991.98px) {
+    .footer {
+        margin-top: 60px;
+        padding: 50px 0 25px;
+    }
+
+    .footer hr {
+        margin: 32px 0;
+    }
+
+    .footer-social-column {
+        text-align: center;
+        padding-top: 8px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+@media (max-width: 767.98px) {
+    .footer {
+        margin-top: 50px;
+        padding: 45px 0 24px;
+        text-align: center;
+    }
+
+    .footer hr {
+        margin: 28px 0;
+    }
+
+    .footer-column {
+        padding: 0 12px;
+    }
+
+    .footer h5 {
+        margin-bottom: 15px;
+    }
+
+    .footer ul li a {
+        justify-content: center;
+    }
+
+    .footer ul li a:hover {
+        transform: none;
+    }
+
+    .footer-info {
+        justify-content: center;
+        text-align: left;
+        max-width: 330px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+@media (max-width: 575.98px) {
+    .footer {
+        margin-top: 40px;
+        padding-top: 38px;
+    }
+
+    .footer-top p {
+        max-width: 320px;
+    }
+
+    .footer-main-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .footer hr {
+        margin: 24px 0;
+    }
+
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icons a {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        padding: 0 10px;
+        font-size: 0.82rem;
+    }
+}
+@media (max-width: 360px) {
+    .footer-main-button {
+        font-size: 0.95rem;
+    }
+    .footer-info {
+        font-size: 0.88rem;
+    }
+    .social-icons {
+        gap: 9px;
+    }
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
 }

@@ -1,77 +1,201 @@
-<div class="main-wrapper">
-    <div class="login-header">
-        <i class="bi bi-trophy trophy-icon"></i>
-        <h2>TU ENTRADA</h2>
-        <p>Accede a tu cuenta</p>
-    </div>
-    <div class="login-card">
-        <div class="login-tabs">
-            <div class="login-tab" 
-                 [class.active]="tabActivo === 'login'" 
-                 (click)="switchTab('login')">INICIAR SESIÓN</div>
-                 
-            <div class="login-tab" 
-                 [class.active]="tabActivo === 'register'" 
-                 (click)="switchTab('register')">REGISTRARSE</div>
+<div class="main-wrapper container-fluid">
+
+    <div class="login-container">
+
+        <div class="login-header">
+            <i class="bi bi-trophy trophy-icon"></i>
+            <h2>TU ENTRADA</h2>
+            <p>Accede a tu cuenta</p>
         </div>
-        
-        <div class="login-body">
-            <button type="button" class="btn-google">
-                Continuar con Google
-            </button>
-            <div class="divider">
-                <span>o con email</span>
+
+        <div class="login-card">
+
+            <div class="login-tabs">
+
+                <button
+                    type="button"
+                    class="login-tab"
+                    [class.active]="tabActivo === 'login'"
+                    (click)="switchTab('login')">
+                    INICIAR SESIÓN
+                </button>
+
+                <button
+                    type="button"
+                    class="login-tab"
+                    [class.active]="tabActivo === 'register'"
+                    (click)="switchTab('register')">
+                    REGISTRARSE
+                </button>
+
             </div>
 
-            <div id="content-login" [class.d-none]="tabActivo !== 'login'">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" placeholder="carlos@ejemplo.com" required>
-                    </div>
-                    <div class="mb-2">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
-                    </div>
-                    <div class="text-end mb-4">
-                        <a href="perfil.html" class="forgot-link">¿Olvidaste tu contraseña?</a>
-                    </div>
-                    <button type="button" class="btn-submit">Iniciar Sesión</button>
-                </form>
+            <div class="login-body">
+
+                <button
+                    type="button"
+                    class="btn-google">
+                    <i class="bi bi-google"></i>
+                    Continuar con Google
+                </button>
+
+                <div class="divider">
+                    <span>o con email</span>
+                </div>
+
+                <div
+                    id="content-login"
+                    [class.d-none]="tabActivo !== 'login'">
+
+                    <form>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                placeholder="carlos@ejemplo.com"
+                                required>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                placeholder="••••••••"
+                                required>
+                        </div>
+
+                        <div class="text-end mb-4">
+                            <a
+                                routerLink="/perfil"
+                                class="forgot-link">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn-submit">
+                            Iniciar Sesión
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div
+                    id="content-register"
+                    [class.d-none]="tabActivo !== 'register'">
+
+                    <form>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Carlos García"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                placeholder="carlos@ejemplo.com"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                placeholder="••••••••"
+                                required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">
+                                Confirmar contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                placeholder="••••••••"
+                                required>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn-submit">
+                            Crear Cuenta
+                        </button>
+
+                        <p class="terms-text">
+                            Al registrarte, aceptas nuestros
+                            <a href="#">Términos de Servicio</a>
+                            y
+                            <a href="#">Política de Privacidad</a>.
+                        </p>
+
+                    </form>
+
+                </div>
+
             </div>
 
-            <div id="content-register" [class.d-none]="tabActivo !== 'register'">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Nombre completo</label>
-                        <input type="text" class="form-control" placeholder="Carlos García" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" placeholder="carlos@ejemplo.com" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
-                    </div>
-                    <button type="button" class="btn-submit">Crear Cuenta</button>
-                    <p class="terms-text">
-                        Al registrarte, aceptas nuestros <a href="#">Términos de Servicio</a> y <a href="#">Política de Privacidad</a>.
-                    </p>
-                </form>
-            </div>
         </div>
+
+        <div
+            id="footer-login"
+            class="register-text text-center"
+            [class.d-none]="tabActivo !== 'login'">
+
+            ¿No tienes cuenta?
+
+            <a
+                role="button"
+                (click)="switchTab('register')">
+                Regístrate
+            </a>
+
+        </div>
+
+        <div
+            id="footer-register"
+            class="register-text text-center"
+            [class.d-none]="tabActivo !== 'register'">
+
+            ¿Ya tienes cuenta?
+
+            <a
+                role="button"
+                (click)="switchTab('login')">
+                Inicia Sesión
+            </a>
+
+        </div>
+
     </div>
 
-    <div id="footer-login" class="register-text" [class.d-none]="tabActivo !== 'login'">
-        ¿No tienes cuenta? <a style="cursor: pointer;" (click)="switchTab('register')">Regístrate</a>
-    </div>
-    
-    <div id="footer-register" class="register-text" [class.d-none]="tabActivo !== 'register'">
-        ¿Ya tienes cuenta? <a style="cursor: pointer;" (click)="switchTab('login')">Inicia Sesión</a>
-    </div>
 </div>

@@ -1,49 +1,78 @@
 <div class="content-area">
+
     <div class="content-card">
+
         <div class="card-header-actions">
-            <div>
-                <h5 class="fw-bold mb-1" style="color: var(--text-dark);">Reporte de Entradas Vendidas</h5>
-                <span style="color: #94a3b8; font-size: 0.9rem;">
+
+            <div class="report-title">
+                <h5 class="fw-bold mb-1">
+                    Reporte de Entradas Vendidas
+                </h5>
+
+                <span>
                     {{ ventasFiltradas.length }} registros
                 </span>
             </div>
-            <div class="d-flex gap-2">
-                <button class="btn-export btn-export-pdf" (click)="exportarPDF()">
-                    <i class="bi bi-download"></i> Exportar PDF
+
+            <div class="export-actions">
+
+                <button
+                    type="button"
+                    class="btn-export btn-export-pdf"
+                    (click)="exportarPDF()">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                    <span>Exportar PDF</span>
                 </button>
 
-                <button class="btn-export btn-export-excel" (click)="exportarExcel()">
-                    <i class="bi bi-download"></i> Exportar Excel
+                <button
+                    type="button"
+                    class="btn-export btn-export-excel"
+                    (click)="exportarExcel()">
+                    <i class="bi bi-file-earmark-excel"></i>
+                    <span>Exportar Excel</span>
                 </button>
+
             </div>
+
         </div>
 
         <div class="row g-3 align-items-center mb-4">
-            <div class="col-md-9">
+
+            <div class="col-12 col-md-8 col-lg-9">
+
                 <div class="search-container">
-                <i class="bi bi-search"></i>
-                <input
-                    type="text"
-                    class="search-input"
-                    placeholder="Buscar comprador, evento o código..."
-                    [(ngModel)]="textoBusqueda"
-                    (keyup)="aplicarFiltros()">
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="search"
+                        class="search-input"
+                        placeholder="Buscar comprador, evento o código..."
+                        [(ngModel)]="textoBusqueda"
+                        (keyup)="aplicarFiltros()">
                 </div>
+
             </div>
 
-            <div class="col-md-3">
+            <div class="col-12 col-md-4 col-lg-3">
+
                 <select
-                class="filter-select w-100"
-                [(ngModel)]="estadoFiltro"
-                (change)="aplicarFiltros()">
-                <option value="todos">Todos</option>
-                <option value="confirmada">Confirmada</option>
+                    class="filter-select w-100"
+                    [(ngModel)]="estadoFiltro"
+                    (change)="aplicarFiltros()">
+
+                    <option value="todos">Todos</option>
+                    <option value="confirmada">Confirmada</option>
+
                 </select>
+
             </div>
+
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-borderless align-middle mb-0">
+        <div class="table-responsive sales-table-wrapper">
+
+            <table class="table table-borderless align-middle mb-0 sales-table">
+
                 <thead>
                     <tr>
                         <th>CÓDIGO</th>
@@ -56,62 +85,119 @@
                         <th class="text-end"></th>
                     </tr>
                 </thead>
+
                 <tbody>
+
                     <tr *ngFor="let compra of ventasFiltradas">
-                        <td>{{ compra.codigoCompra }}</td>
 
-                        <td class="fw-bold">
-                        {{ compra.usuario?.nombre }} {{ compra.usuario?.apellido }}
+                        <td data-label="Código">
+                            {{ compra.codigoCompra }}
                         </td>
 
-                        <td>
-                        {{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}
+                        <td data-label="Comprador" class="fw-bold">
+                            {{ compra.usuario?.nombre }}
+                            {{ compra.usuario?.apellido }}
                         </td>
 
-                        <td>
-                        <span class="badge-cat">
-                            {{ compra.detalles?.[0]?.tipoEntrada?.nombre }}
-                        </span>
+                        <td data-label="Partido">
+                            {{ compra.detalles?.[0]?.tipoEntrada?.evento?.nombre }}
                         </td>
 
-                        <td class="fw-bold text-dark">
-                        {{ compra.total | currency:'USD':'symbol':'1.0-0' }}
+                        <td data-label="Categoría">
+                            <span class="badge-cat">
+                                {{ compra.detalles?.[0]?.tipoEntrada?.nombre }}
+                            </span>
                         </td>
 
-                        <td>
-                        {{ compra.fechaConfirmacion | date:'dd/MM/yyyy' }}
+                        <td data-label="Precio" class="fw-bold text-dark">
+                            {{ compra.total | currency:'USD':'symbol':'1.0-0' }}
                         </td>
 
-                        <td>
-                        <span class="badge-status-conf" *ngIf="compra.estado === 'confirmada'">
-                            Confirmada
-                        </span>
+                        <td data-label="Fecha">
+                            {{ compra.fechaConfirmacion | date:'dd/MM/yyyy' }}
                         </td>
 
-                        <td class="text-end">
-                        <span class="text-muted">-</span>
+                        <td data-label="Estado">
+
+                            <span
+                                class="badge-status-conf"
+                                *ngIf="compra.estado === 'confirmada'">
+                                Confirmada
+                            </span>
+
                         </td>
+
+                        <td data-label="Acciones" class="text-end">
+                            <span class="text-muted">-</span>
+                        </td>
+
                     </tr>
 
-                    <tr *ngIf="ventasFiltradas.length === 0">
-                        <td colspan="8" class="text-center py-4 text-muted">
-                        No hay ventas para mostrar.
+                    <tr
+                        *ngIf="ventasFiltradas.length === 0"
+                        class="empty-row">
+
+                        <td
+                            colspan="8"
+                            class="text-center py-4 text-muted">
+
+                            <i class="bi bi-receipt fs-2 d-block mb-2"></i>
+                            No hay ventas para mostrar.
+
                         </td>
+
                     </tr>
-                    </tbody>
+
+                </tbody>
+
             </table>
+
         </div>
 
         <div class="pagination-area">
-            <div>Mostrando 1-8 de 20</div>
-            <div class="pagination-controls">
-                <a href="#" class="page-btn text-btn">&larr; Anterior</a>
-                <a href="#" class="page-btn active">1</a>
-                <a href="#" class="page-btn">2</a>
-                <a href="#" class="page-btn">3</a>
-                <a href="#" class="page-btn text-btn">Siguiente &rarr;</a>
+
+            <div class="pagination-info">
+                Mostrando 1-8 de 20
             </div>
+
+            <div class="pagination-controls">
+
+                <a
+                    href="#"
+                    class="page-btn text-btn">
+                    <i class="bi bi-arrow-left"></i>
+                    <span class="pagination-text">Anterior</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="page-btn active">
+                    1
+                </a>
+
+                <a
+                    href="#"
+                    class="page-btn">
+                    2
+                </a>
+
+                <a
+                    href="#"
+                    class="page-btn">
+                    3
+                </a>
+
+                <a
+                    href="#"
+                    class="page-btn text-btn">
+                    <span class="pagination-text">Siguiente</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
         </div>
 
     </div>
+
 </div>

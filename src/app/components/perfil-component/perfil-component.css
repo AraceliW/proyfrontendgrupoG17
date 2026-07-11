@@ -1,10 +1,11 @@
 .perfil-page {
+  width: 100%;
   max-width: 1200px;
 }
 
 .perfil-card,
 .content-card {
-  background: #fff;
+  background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   overflow: hidden;
@@ -12,7 +13,7 @@
 
 .profile-banner {
   height: 120px;
-  background: #184c35;
+  background-color: #184c35;
 }
 
 .perfil-header {
@@ -23,6 +24,7 @@
 }
 
 .profile-img-container {
+  flex-shrink: 0;
   margin-top: -45px;
 }
 
@@ -31,70 +33,113 @@
   height: 105px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+.perfil-info {
+  min-width: 0;
 }
 
 .perfil-info h3 {
   margin: 0;
   font-weight: 800;
+  color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
-.perfil-info p,
-.perfil-info small {
+.perfil-info p {
   color: #64748b;
+  margin: 4px 0;
+}
+
+.perfil-info small {
+  display: block;
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+.edit-profile-button {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
 }
 
 .stats-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 170px));
   justify-content: center;
   gap: 24px;
   padding: 10px 24px 28px;
 }
 
 .stat-box {
-  width: 170px;
-  background: #f8fafc;
+  width: 100%;
+  min-height: 135px;
+  background-color: #f8fafc;
   border-radius: 12px;
   padding: 18px;
   text-align: center;
   border: 1px solid #eef2f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat-box i {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #198754;
 }
 
 .stat-box h4 {
   font-weight: 800;
   margin: 8px 0 4px;
+  color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
 .stat-box span {
   font-size: 0.85rem;
   font-weight: 700;
+  color: #475569;
 }
 
 .perfil-tabs {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 12px;
-  padding-bottom: 28px;
+  padding: 0 24px 28px;
 }
 
 .perfil-tabs button {
+  min-height: 42px;
   border: none;
-  background: transparent;
+  background-color: transparent;
   color: #2563eb;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.perfil-tabs button:hover {
+  background-color: #eff6ff;
 }
 
 .perfil-tabs button.active {
-  background: #0d6efd;
-  color: white;
-  box-shadow: 0 0 0 4px rgba(13,110,253,.18);
+  background-color: #0d6efd;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.18);
 }
 
 .perfil-content {
@@ -106,32 +151,91 @@
   margin-bottom: 28px;
 }
 
+.content-card h5 {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-control {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-control:focus {
+  border-color: #86efac;
+  box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.15);
+}
+
+.profile-form-actions .btn {
+  min-height: 42px;
+  padding: 9px 18px;
+}
+
 .datos-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
+}
+
+.dato-item {
+  min-width: 0;
+  background-color: #f8fafc;
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  padding: 16px;
 }
 
 .datos-grid span {
   display: block;
   color: #64748b;
   font-size: 0.85rem;
+  margin-bottom: 5px;
 }
 
 .datos-grid strong {
+  display: block;
   font-size: 1rem;
+  color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
 .ticket-card {
+  height: 100%;
+  background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 20px;
-  height: 100%;
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ticket-info {
+  min-width: 0;
 }
 
 .ticket-card h5 {
   font-weight: 800;
+  overflow-wrap: anywhere;
 }
 
 .ticket-card p,
@@ -139,32 +243,378 @@
   color: #64748b;
 }
 
+.ticket-card p {
+  overflow-wrap: anywhere;
+}
+
+.ticket-status {
+  flex-shrink: 0;
+}
+
+.ticket-qr img {
+  width: 130px;
+  height: 130px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.ticket-code {
+  color: #0f172a !important;
+  overflow-wrap: anywhere;
+}
+
+.purchases-table-wrapper {
+  width: 100%;
+}
+
+.purchases-table {
+  min-width: 950px;
+  margin-bottom: 0;
+}
+
+.purchases-table th {
+  white-space: nowrap;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+.purchases-table td {
+  color: #334155;
+  overflow-wrap: anywhere;
+}
+
+.pdf-button {
+  white-space: nowrap;
+}
+
+.badge {
+  padding: 7px 10px;
+  font-size: 0.75rem;
+}
+
 .reclamo-item {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px;
   margin-top: 18px;
+  background-color: #ffffff;
 }
 
-@media (max-width: 768px) {
+.reclamo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.reclamo-header strong {
+  color: #0f172a;
+  overflow-wrap: anywhere;
+}
+
+.reclamo-item p {
+  color: #64748b;
+  margin: 12px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.claim-button {
+  min-height: 42px;
+  padding: 9px 18px;
+}
+
+@media (max-width: 991.98px) {
   .perfil-header {
-    flex-direction: column;
-    align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   .stats-row {
-    flex-direction: column;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .stat-box {
+    min-width: 0;
+  }
+
+  .content-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .perfil-page {
+    margin-top: 16px !important;
+  }
+
+  .profile-banner {
+    height: 100px;
+  }
+
+  .perfil-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px 22px;
+    text-align: center;
+  }
+
+  .profile-img-container {
+    margin-top: -48px;
+  }
+
+  .profile-img-container img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .perfil-info {
     width: 100%;
   }
 
+  .edit-profile-button {
+    width: 100%;
+    max-width: 260px;
+    margin-left: 0 !important;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 8px 18px 24px;
+  }
+
+  .stat-box {
+    min-height: 120px;
+    padding: 14px 8px;
+  }
+
+  .stat-box span {
+    font-size: 0.75rem;
+  }
+
   .perfil-tabs {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 18px 24px;
+    scrollbar-width: thin;
+  }
+
+  .perfil-tabs button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .perfil-content {
+    margin-top: 18px;
+  }
+
+  .content-card {
+    padding: 20px;
+    margin-bottom: 20px;
   }
 
   .datos-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ticket-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ticket-status {
+    align-self: flex-start;
+  }
+
+  .reclamo-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .perfil-page {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .perfil-card,
+  .content-card {
+    border-radius: 11px;
+  }
+
+  .profile-banner {
+    height: 85px;
+  }
+
+  .perfil-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .profile-img-container {
+    margin-top: -42px;
+  }
+
+  .profile-img-container img {
+    width: 86px;
+    height: 86px;
+  }
+
+  .perfil-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 8px 14px 22px;
+  }
+
+  .stat-box {
+    min-height: auto;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-areas:
+      "icon number"
+      "icon text";
+    text-align: left;
+    column-gap: 12px;
+  }
+
+  .stat-box i {
+    grid-area: icon;
+    align-self: center;
+    font-size: 1.7rem;
+  }
+
+  .stat-box h4 {
+    grid-area: number;
+    margin: 0;
+  }
+
+  .stat-box span {
+    grid-area: text;
+    font-size: 0.8rem;
+  }
+
+  .perfil-tabs {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 8px;
+  }
+
+  .perfil-tabs button {
+    min-height: 40px;
+    padding: 9px 13px;
+    font-size: 0.82rem;
+  }
+
+  .content-card {
+    padding: 16px;
+  }
+
+  .profile-form-actions .btn,
+  .claim-button {
+    width: 100%;
+  }
+
+  .ticket-card {
+    padding: 16px;
+  }
+
+  .ticket-qr img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .purchases-card {
+    overflow: visible;
+  }
+
+  .purchases-table-wrapper {
+    overflow: visible;
+  }
+
+  .purchases-table {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .purchases-table thead {
+    display: none;
+  }
+
+  .purchases-table,
+  .purchases-table tbody,
+  .purchases-table tr,
+  .purchases-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .purchases-table tbody tr {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    background-color: #ffffff;
+  }
+
+  .purchases-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .purchases-table tbody td {
+    position: relative;
+    min-height: 46px;
+    padding: 27px 0 10px;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: left;
+  }
+
+  .purchases-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .purchases-table tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .pdf-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .perfil-info h3 {
+    font-size: 1.15rem;
+  }
+
+  .perfil-info p,
+  .perfil-info small {
+    font-size: 0.82rem;
+  }
+
+  .perfil-tabs button {
+    font-size: 0.76rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .content-card {
+    padding: 14px;
   }
 }

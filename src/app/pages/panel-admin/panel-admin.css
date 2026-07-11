@@ -13,3 +13,37 @@
 .user-profile { display: flex; align-items: center; gap: 15px; cursor: pointer; }
 .avatar { width: 36px; height: 36px; background-color: #2e7d32; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 .content-area { padding: 30px; }
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 991px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 240px;
+    height: 100vh;
+    z-index: 1050;
+    transition: left 0.3s ease;
+  }
+
+  .admin-sidebar.abierto {
+    left: 0;
+  }
+
+  .admin-content {
+    width: 100%;
+  }
+}

@@ -2,81 +2,106 @@
     <div class="container">
         <div class="footer-top text-center">
             <i class="bi bi-trophy-fill logo-icon"></i>
-            <h3>DIBU<span>TICK</span></h3>
+            <h3>
+                DIBU<span>TICK</span>
+            </h3>
             <p>
                 La forma más simple y segura de comprar entradas
                 para los mejores eventos deportivos.
             </p>
-            <a href="/#eventos" class="btn btn-success btn-lg mt-3">
+            <a href="/#eventos"
+                class="btn btn-success btn-lg footer-main-button mt-3">
                 <i class="bi bi-ticket-perforated-fill"></i>
                 Ver Eventos
             </a>
         </div>
         <hr>
-        <div class="row gy-4">
-            <div class="col-md-4">
-                <h5>Plataforma</h5>
-                <ul>
-                    <li>
-                        <a routerLink="/">
-                            <i class="bi bi-house-door"></i>
-                            Inicio
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/">
-                            <i class="bi bi-calendar-event"></i>
-                            Eventos
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/Perfil">
-                            <i class="bi bi-person-circle"></i>
-                            Mi Perfil
-                        </a>
-                    </li>
-                </ul>
+        <div class="row gy-4 gy-lg-0 justify-content-between">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="footer-column">
+                    <h5>Plataforma</h5>
+                    <ul>
+                        <li>
+                            <a routerLink="/">
+                                <i class="bi bi-house-door"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/" fragment="eventos">
+                                <i class="bi bi-calendar-event"></i>
+                                <span>Eventos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/Perfil">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Mi Perfil</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="col-md-4">
-                <h5>Soporte</h5>
-                <ul>
-                    <li>
-                        <i class="bi bi-envelope-fill"></i>
-                        soporte@dibutick.com
-                    </li>
-                    <li>
-                        <i class="bi bi-geo-alt-fill"></i>
-                        San Salvador de Jujuy, Argentina
-                    </li>
-                </ul>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="footer-column">
+                    <h5>Soporte</h5>
+                    <ul>
+                        <li class="footer-info">
+                            <i class="bi bi-envelope-fill"></i>
+                            <a href="mailto:soporte@dibutick.com">
+                                soporte@dibutick.com
+                            </a>
+                        </li>
+                        <li class="footer-info">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>
+                                San Salvador de Jujuy, Argentina
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <div class="col-12 col-lg-4">
+                <div class="footer-column footer-social-column">
+                    <h5>Seguinos</h5>
+                    <div class="social-icons">
+                        <a href="#"
+                            aria-label="Instagram"
+                            title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
 
-            <div class="col-md-4">
-                <h5>Seguinos</h5>
-                <div class="social-icons">
-                    <a href="#">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="#">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                    <a href="#">
-                        <i class="bi bi-twitter-x"></i>
-                    </a>
+                        <a href="#"
+                            aria-label="Facebook"
+                            title="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#"
+                            aria-label="LinkedIn"
+                            title="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#"
+                            aria-label="X"
+                            title="X">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <hr>
         <div class="footer-bottom">
-            © 2026 <strong>DIBUTICK</strong>
-            <br>
-            Proyecto Final · Programación Sobre Web
-            <br>
-            Universidad Nacional de Jujuy
+            <p class="mb-1">
+                © 2026 <strong>DIBUTICK</strong>
+            </p>
+            <p class="mb-1">
+                Proyecto Final · Programación Sobre Web
+            </p>
+            <p class="mb-0">
+                Universidad Nacional de Jujuy
+            </p>
         </div>
     </div>
 </footer>
